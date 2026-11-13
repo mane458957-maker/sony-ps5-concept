@@ -67,8 +67,10 @@
   h1.hero-title span{color:var(--accent)}
   .hero p.lead{color:#d7dbf0;font-size:16px;margin:16px 0 24px;max-width:460px}
   .btn{display:inline-block;padding:15px 26px;border-radius:999px;font-weight:800;font-size:15px;cursor:pointer;border:0;text-align:center}
-  .btn-red{background:var(--grad);color:#fff;box-shadow:var(--glow-v)}
+  .btn-red{position:relative;overflow:hidden;background:var(--grad);color:#fff;box-shadow:var(--glow-v)}
   .btn-red:active{filter:brightness(.92)}
+  .btn-red::after{content:"";position:absolute;top:0;left:-60%;width:38%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);pointer-events:none;animation:btnsheen 3.6s ease-in-out infinite}
+  @keyframes btnsheen{0%{left:-60%}50%{left:135%}100%{left:135%}}
   .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff}
   .hero-cta{display:flex;flex-direction:column;gap:12px;max-width:340px}
 
@@ -107,7 +109,13 @@
   .stat span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
 
   .games{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .game{aspect-ratio:3/4;border-radius:12px;background:linear-gradient(160deg,#1a1d2e,#0a0b14);border:1px solid var(--line);position:relative;overflow:hidden}
+  .game{aspect-ratio:3/4;border-radius:12px;background:linear-gradient(160deg,#1a1d2e,#0a0b14);border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .3s}
+  .game:hover{transform:translateY(-4px)}
+  .game::after{content:"";position:absolute;top:-60%;left:-75%;width:55%;height:220%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:rotate(8deg);pointer-events:none;animation:sheen 5s ease-in-out infinite}
+  .game:nth-child(2)::after{animation-delay:.7s}
+  .game:nth-child(3)::after{animation-delay:1.4s}
+  .game:nth-child(4)::after{animation-delay:2.1s}
+  @keyframes sheen{0%{left:-75%}55%{left:145%}100%{left:145%}}
   .game .ph{font-size:10px}
   .game .tag{position:absolute;top:10px;left:10px;z-index:2;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--grad);padding:3px 8px;border-radius:999px}
   .game .name{position:absolute;bottom:11px;left:11px;z-index:2;font-weight:700;font-size:13px;text-shadow:0 2px 8px #000}

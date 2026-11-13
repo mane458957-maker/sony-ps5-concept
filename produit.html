@@ -115,8 +115,11 @@
 
   .buy-row{display:flex;flex-direction:column;gap:12px;margin-top:22px}
   .btn{display:block;width:100%;padding:16px 26px;border-radius:999px;font-weight:800;font-size:15px;cursor:pointer;border:0;text-align:center}
-  .btn-red{background:var(--grad);color:#fff;box-shadow:var(--glow-v)}
+  .btn-red{position:relative;overflow:hidden;background:var(--grad);color:#fff;box-shadow:var(--glow-v);transition:transform .2s}
+  .btn-red:hover{transform:translateY(-1px)}
   .btn-red:active{filter:brightness(.92)}
+  .btn-red::after{content:"";position:absolute;top:0;left:-60%;width:38%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);pointer-events:none;animation:btnsheen 3.6s ease-in-out infinite}
+  @keyframes btnsheen{0%{left:-60%}50%{left:135%}100%{left:135%}}
   .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff}
   .reassure{display:flex;gap:20px;margin-top:22px;flex-wrap:wrap;color:var(--muted);font-size:13px}
   .reassure div{display:flex;align-items:center;gap:7px}
@@ -173,8 +176,14 @@
   .video-caption p{color:var(--muted);font-size:14px;max-width:560px}
 
   .releases{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .releases .rel{aspect-ratio:3/4;border-radius:12px;border:1px solid var(--line);background:linear-gradient(160deg,#102a4e,#0a1836);overflow:hidden}
+  .releases .rel{position:relative;aspect-ratio:3/4;border-radius:12px;border:1px solid var(--line);background:linear-gradient(160deg,#102a4e,#0a1836);overflow:hidden;transition:transform .3s}
+  .releases .rel:hover{transform:translateY(-4px)}
+  .releases .rel::after{content:"";position:absolute;top:-60%;left:-75%;width:55%;height:220%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:rotate(8deg);pointer-events:none;animation:sheen 5s ease-in-out infinite}
+  .releases .rel:nth-child(2)::after{animation-delay:.7s}
+  .releases .rel:nth-child(3)::after{animation-delay:1.4s}
+  .releases .rel:nth-child(4)::after{animation-delay:2.1s}
   .releases .ph{font-size:10px}
+  @keyframes sheen{0%{left:-75%}55%{left:145%}100%{left:145%}}
 
   .inbox{display:grid;grid-template-columns:1fr;gap:22px;align-items:center}
   .inbox .bimg{aspect-ratio:4/3;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(160deg,#102a4e,#0a1836)}
