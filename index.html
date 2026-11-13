@@ -7,18 +7,10 @@
 <meta name="description" content="NOVA One: total immersion, ultra-fast SSD, haptic controller. A fictional console built as a design exercise." />
 <style>
   :root{
-    --bg:#06070d;
-    --bg-2:#0c0e18;
-    --panel:#11131f;
-    --ink:#f2f4ff;
-    --muted:#9aa0bd;
-    --line:rgba(255,255,255,.08);
-    --accent:#22e0ff;
-    --accent-2:#6a5cff;
-    --bf:#ffb020;
-    --glow:0 0 40px rgba(34,224,255,.35);
-    --radius:18px;
-    --maxw:1180px;
+    --bg:#06070d;--bg-2:#0c0e18;--panel:#11131f;--ink:#f2f4ff;--muted:#9aa0bd;
+    --line:rgba(255,255,255,.08);--accent:#22e0ff;--accent-2:#6a5cff;
+    --red:#e11d2a;--red-2:#ff3b47;--red-dark:#b3141f;
+    --glow:0 0 40px rgba(34,224,255,.35);--radius:16px;--maxw:1180px;
     --font:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -26,208 +18,158 @@
   body{font-family:var(--font);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.5}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 18px}
 
-  /* ---------- BLACK FRIDAY TOP BAR ---------- */
-  .bf-bar{background:linear-gradient(90deg,#1a1205,#2a1d02,#1a1205);border-bottom:1px solid rgba(255,176,32,.3);text-align:center;padding:9px 16px;font-size:13px;letter-spacing:.08em;color:var(--bf);font-weight:700}
-  .bf-bar b{color:#fff}
-
-  /* ---------- NAV ---------- */
-  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,7,13,.6);border-bottom:1px solid var(--line);transition:background .3s}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.18em;font-size:18px}
-  .logo .mark{width:30px;height:30px;border-radius:8px;background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--accent));box-shadow:var(--glow);position:relative}
-  .logo .mark::after{content:"";position:absolute;inset:7px;border-radius:4px;background:var(--bg)}
-  /* --- logo image optionnel : dépose un fichier "logo.png" --- */
-  .logo-img{display:none;height:34px;width:auto}
+  /* image/logo slots */
+  .logo-img{display:none;height:30px;width:auto}
   .logo-img.on{display:block}
   .logo-img.on ~ .mark,.logo-img.on ~ .logo-txt{display:none}
-  /* --- emplacements image : repère tant qu'aucun fichier n'est déposé --- */
   .imgslot{position:relative;overflow:hidden}
   .imgslot>img{display:none;width:100%;height:100%;object-fit:cover}
   .imgslot>img.on{display:block}
   .imgslot>img.on ~ .ph{display:none}
-  .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:16px;line-height:1.6}
-  .ph b{color:var(--accent);letter-spacing:.04em}
-  nav.menu{display:flex;gap:28px;font-size:14px;color:var(--muted)}
-  nav.menu a:hover{color:var(--ink)}
-  .nav-cta{padding:9px 18px;border-radius:999px;font-size:13px;font-weight:700;background:linear-gradient(120deg,var(--accent),var(--accent-2));color:#04121a;box-shadow:var(--glow)}
-  @media(max-width:820px){nav.menu{display:none}}
+  .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:14px;line-height:1.6}
+  .ph b{color:var(--accent);letter-spacing:.03em}
 
-  /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:92vh;display:flex;align-items:center;background:radial-gradient(1000px 600px at 70% 20%,rgba(106,92,255,.25),transparent 60%),radial-gradient(800px 500px at 20% 80%,rgba(34,224,255,.18),transparent 60%),var(--bg);overflow:hidden}
-  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(circle at 50% 40%,#000,transparent 75%);opacity:.5}
-  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:70px;padding-bottom:60px}
-  .bf-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(120deg,var(--bf),#ff7a18);color:#1a1205;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:20px;box-shadow:0 0 30px rgba(255,176,32,.4)}
-  .bf-badge::before{content:"⚡"}
-  h1.hero-title{font-size:clamp(44px,7vw,86px);line-height:.98;font-weight:900;letter-spacing:-.02em}
-  h1.hero-title span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero p.lead{color:var(--muted);font-size:clamp(16px,2vw,19px);margin:24px 0 20px;max-width:480px}
-  .price-line{display:flex;align-items:baseline;gap:14px;margin-bottom:28px;flex-wrap:wrap}
-  .price-line .old{color:var(--muted);text-decoration:line-through;font-size:22px}
-  .price-line .new{font-size:40px;font-weight:900;color:#fff}
-  .price-line .save{background:rgba(255,176,32,.15);color:var(--bf);font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(255,176,32,.35)}
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-  .btn{padding:15px 30px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s;cursor:pointer;border:0}
-  .btn-primary{background:linear-gradient(120deg,var(--accent),var(--accent-2));color:#04121a;box-shadow:var(--glow)}
-  .btn-primary:hover{transform:translateY(-2px)}
-  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:transparent}
-  .btn-ghost:hover{border-color:var(--accent)}
+  /* announcement bar (RED) */
+  .bf-bar{background:var(--red);color:#fff;text-align:center;padding:10px 16px;font-size:12.5px;letter-spacing:.06em;font-weight:700}
+  .bf-bar b{font-weight:800}
 
-  /* stock widget */
-  .stock-box{margin-top:26px;max-width:360px;background:var(--panel);border:1px solid rgba(255,176,32,.25);border-radius:14px;padding:16px 18px}
-  .stock-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:10px}
-  .stock-top .lbl{color:var(--muted);letter-spacing:.04em}
-  .stock-top .cnt{color:var(--bf);font-weight:800}
-  .stock-top .cnt b{font-size:17px}
-  .stock-bar{height:7px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
-  .stock-fill{height:100%;width:100%;border-radius:999px;background:linear-gradient(90deg,var(--bf),#ff5a18);transition:width .6s ease}
-  .stock-note{margin-top:9px;font-size:12px;color:var(--muted)}
-  .stock-note b{color:#ff6b6b}
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,7,13,.72);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.16em;font-size:17px}
+  .logo .mark{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--accent));position:relative}
+  .logo .mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--bg)}
+  nav.menu{display:none}
+  .nav-cta{padding:9px 16px;border-radius:999px;font-size:13px;font-weight:700;background:var(--red);color:#fff}
 
-  /* hero visual / 3D */
-  .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:500px}
-  .scene{width:260px;height:460px;perspective:1100px;position:relative;display:flex;align-items:center;justify-content:center}
-  .console3d{width:200px;height:320px;position:relative;transform-style:preserve-3d;transform:rotateX(-8deg) rotateY(-28deg);will-change:transform;animation:floaty 6s ease-in-out infinite}
-  @keyframes floaty{0%,100%{margin-top:0}50%{margin-top:-14px}}
-  .face{position:absolute;overflow:hidden}
-  .front,.back{width:200px;height:320px;border-radius:16px}
-  .front{transform:translateZ(35px);background:linear-gradient(150deg,#20243a,#0a0b14);border:1px solid rgba(255,255,255,.08)}
-  .back{transform:translateZ(-35px) rotateY(180deg);background-color:#0a0b14;border:1px solid rgba(255,255,255,.05)}
-  .right-s,.left-s{width:70px;height:320px;top:0}
-  .right-s{left:65px;transform:rotateY(90deg) translateZ(100px);background:linear-gradient(#2a2e40,#0e1018)}
-  .left-s{left:65px;transform:rotateY(-90deg) translateZ(100px);background:linear-gradient(#2a2e40,#0e1018)}
-  .top-s,.bot-s{width:200px;height:70px;left:0}
-  .top-s{top:125px;transform:rotateX(90deg) translateZ(160px);background:linear-gradient(90deg,#2a2e40,#1a1d2e)}
-  .bot-s{top:125px;transform:rotateX(-90deg) translateZ(160px);background:#0a0b14}
-  .seam{position:absolute;left:50%;top:26px;transform:translateX(-50%);width:6px;height:268px;border-radius:4px;background:linear-gradient(var(--accent),var(--accent-2));box-shadow:0 0 18px var(--accent),0 0 40px rgba(34,224,255,.5)}
-  .rail{position:absolute;top:14px;width:16px;height:292px;border-radius:8px;background:linear-gradient(#3a3f58,#191c2b)}
-  .rail.left{left:20px}.rail.right{right:20px}
-  .cap{position:absolute;left:12px;right:12px;height:16px;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 16px rgba(106,92,255,.6)}
-  .cap.top{top:10px}.cap.bot{bottom:10px}
-  .console-base{position:absolute;bottom:14px;left:50%;transform:translateX(-50%) rotateX(72deg);width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(34,224,255,.18),transparent 62%);border:2px solid rgba(34,224,255,.35);box-shadow:0 0 40px rgba(34,224,255,.25)}
-  .scroll-hint{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);animation:fadePulse 2.4s ease-in-out infinite;white-space:nowrap}
-  @keyframes fadePulse{0%,100%{opacity:.35}50%{opacity:.9}}
-  @media(max-width:820px){.hero .wrap{grid-template-columns:1fr;text-align:center}.bf-badge,.hero p.lead,.price-line,.stock-box{margin-left:auto;margin-right:auto}.price-line,.cta-row{justify-content:center}.stock-top{text-align:left}}
+  /* HERO with background video */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;background:#000}
+  .hero-video{position:absolute;inset:0;z-index:0}
+  .hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+  .hero.has-video .hero-video video{opacity:1}
+  /* fallback animé tant qu'il n'y a pas de vidéo */
+  .hero-fallback{position:absolute;inset:0;background:radial-gradient(900px 600px at 60% 25%,rgba(106,92,255,.28),transparent 60%),radial-gradient(700px 500px at 25% 70%,rgba(34,224,255,.2),transparent 60%),#06070d}
+  .hero.has-video .hero-fallback,.hero.has-video .hero-vph{display:none}
+  .hero-vph{position:absolute;top:18px;left:50%;transform:translateX(-50%);z-index:2;color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:rgba(0,0,0,.4);border:1px dashed rgba(255,255,255,.25);padding:8px 14px;border-radius:999px;white-space:nowrap}
+  .hero-vph b{color:var(--accent)}
+  /* dégradé bas pour lisibilité du texte */
+  .hero-grad{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(6,7,13,.96) 2%,rgba(6,7,13,.75) 22%,rgba(6,7,13,.15) 48%,transparent 70%)}
+  .hero-content{position:relative;z-index:3;width:100%;padding-bottom:44px;padding-top:40vh}
+  .badge-red{display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#fff;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border-radius:999px;margin-bottom:16px}
+  h1.hero-title{font-size:clamp(40px,12vw,64px);line-height:.98;font-weight:900;letter-spacing:-.02em}
+  h1.hero-title span{color:var(--accent)}
+  .hero p.lead{color:#d7dbf0;font-size:16px;margin:16px 0 24px;max-width:460px}
+  .btn{display:inline-block;padding:15px 26px;border-radius:999px;font-weight:800;font-size:15px;cursor:pointer;border:0;text-align:center}
+  .btn-red{background:var(--red);color:#fff;box-shadow:0 10px 30px rgba(225,29,42,.35)}
+  .btn-red:active{background:var(--red-dark)}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff}
+  .hero-cta{display:flex;flex-direction:column;gap:12px;max-width:340px}
 
-  /* ---------- MARQUEE ---------- */
+  /* MARQUEE */
   .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);overflow:hidden;white-space:nowrap}
-  .marquee-track{display:inline-block;padding:16px 0;animation:scrollx 20s linear infinite}
-  .marquee-track span{font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:0 32px}
+  .marquee-track{display:inline-block;padding:13px 0;animation:scrollx 18s linear infinite}
+  .marquee-track span{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin:0 26px}
   .marquee-track span b{color:var(--accent)}
   @keyframes scrollx{to{transform:translateX(-50%)}}
 
-  /* ---------- SECTIONS ---------- */
-  section.block{padding:120px 0;position:relative}
-  .section-head{max-width:620px;margin-bottom:64px}
-  .section-head .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-  .section-head .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
-  .section-head h2{font-size:clamp(30px,4.5vw,50px);font-weight:900;letter-spacing:-.02em;line-height:1.05}
-  .section-head p{color:var(--muted);margin-top:18px;font-size:17px}
+  /* SECTIONS */
+  section.block{padding:72px 0;position:relative}
+  .section-head{max-width:620px;margin-bottom:38px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--accent)}
+  .section-head h2{font-size:clamp(27px,7vw,42px);font-weight:900;letter-spacing:-.02em;line-height:1.06}
+  .section-head p{color:var(--muted);margin-top:14px;font-size:16px}
 
-  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .feature{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;transition:transform .3s,border-color .3s;opacity:0;transform:translateY(30px)}
+  .features{display:grid;grid-template-columns:1fr;gap:16px}
+  .feature{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;transition:transform .3s,border-color .3s;opacity:0;transform:translateY(24px)}
   .feature.in{opacity:1;transform:none}
-  .feature:hover{transform:translateY(-6px);border-color:var(--accent)}
-  .feature .ic{width:48px;height:48px;border-radius:12px;background:linear-gradient(140deg,var(--accent),var(--accent-2));margin-bottom:22px;box-shadow:var(--glow)}
-  .feature h3{font-size:20px;margin-bottom:10px}
+  .feature .ic{width:44px;height:44px;border-radius:11px;background:linear-gradient(140deg,var(--accent),var(--accent-2));margin-bottom:18px}
+  .feature h3{font-size:19px;margin-bottom:9px}
   .feature p{color:var(--muted);font-size:15px}
-  @media(max-width:820px){.features{grid-template-columns:1fr}}
 
-  .showcase{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-  .showcase-img{aspect-ratio:16/11;border-radius:var(--radius);background:linear-gradient(160deg,#171a2b,#0a0b14);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
-  .showcase h2{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.02em;line-height:1.05;margin-bottom:18px}
-  .showcase p{color:var(--muted);font-size:16px;margin-bottom:16px}
-  .stat-row{display:flex;gap:40px;margin-top:28px}
-  .stat b{font-size:32px;background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
-  .stat span{display:block;color:var(--muted);font-size:13px;margin-top:4px}
-  @media(max-width:820px){.showcase{grid-template-columns:1fr}}
+  .showcase{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+  .showcase-img{aspect-ratio:16/11;border-radius:var(--radius);background:linear-gradient(160deg,#171a2b,#0a0b14);border:1px solid var(--line)}
+  .showcase h2{font-size:clamp(25px,7vw,38px);font-weight:900;letter-spacing:-.02em;line-height:1.06;margin-bottom:14px}
+  .showcase p{color:var(--muted);font-size:15px;margin-bottom:14px}
+  .stat-row{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap}
+  .stat b{font-size:28px;color:var(--accent);font-weight:900}
+  .stat span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
 
-  .games{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .game{aspect-ratio:3/4;border-radius:14px;background:linear-gradient(160deg,#1a1d2e,#0a0b14);border:1px solid var(--line);position:relative;overflow:hidden;cursor:pointer;transition:transform .3s}
-  .game:hover{transform:scale(1.03);border-color:var(--accent)}
-  .game span{position:absolute;bottom:14px;left:14px;font-weight:700;font-size:14px}
-  .game small{position:absolute;top:14px;left:14px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
-  @media(max-width:820px){.games{grid-template-columns:repeat(2,1fr)}}
+  .games{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .game{aspect-ratio:3/4;border-radius:12px;background:linear-gradient(160deg,#1a1d2e,#0a0b14);border:1px solid var(--line);position:relative;overflow:hidden}
+  .game .ph{font-size:10px}
+  .game .tag{position:absolute;top:10px;left:10px;z-index:2;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--red);padding:3px 8px;border-radius:999px}
+  .game .name{position:absolute;bottom:11px;left:11px;z-index:2;font-weight:700;font-size:13px;text-shadow:0 2px 8px #000}
 
-  .buy{position:relative;text-align:center;background:radial-gradient(600px 400px at 50% 0%,rgba(106,92,255,.25),transparent 60%),var(--bg-2);border-top:1px solid var(--line)}
-  .buy h2{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-.02em;margin-bottom:18px}
-  .buy p{color:var(--muted);max-width:460px;margin:0 auto 24px;font-size:17px}
-  .buy .price-line{justify-content:center;margin-bottom:28px}
+  .accessories{display:grid;grid-template-columns:1fr;gap:16px}
+  .acc{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .acc .acc-img{aspect-ratio:4/3}
+  .acc .acc-txt{padding:18px 20px}
+  .acc h3{font-size:17px;margin-bottom:6px}
+  .acc p{color:var(--muted);font-size:14px}
 
-  footer{border-top:1px solid var(--line);background:var(--bg);padding:50px 0 40px}
-  .foot-inner{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;color:var(--muted);font-size:13px}
-  .foot-cols{display:flex;gap:60px;flex-wrap:wrap}
-  .foot-col h4{color:var(--ink);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
-  .foot-col a{display:block;margin-bottom:9px;color:var(--muted)}
-  .foot-col a:hover{color:var(--accent)}
-  .disclaimer{margin-top:36px;padding-top:24px;border-top:1px solid var(--line);color:#5a6080;font-size:12px;line-height:1.6}
+  .buy{text-align:center;background:linear-gradient(180deg,var(--bg-2),var(--bg));border-top:1px solid var(--line)}
+  .buy h2{font-size:clamp(28px,8vw,46px);font-weight:900;letter-spacing:-.02em;margin-bottom:14px}
+  .buy p{color:var(--muted);max-width:440px;margin:0 auto 26px;font-size:16px}
+
+  footer{border-top:1px solid var(--line);background:var(--bg);padding:40px 0 36px}
+  .foot-cols{display:flex;gap:40px;flex-wrap:wrap;margin-top:22px}
+  .foot-col h4{color:var(--ink);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+  .foot-col a{display:block;margin-bottom:8px;color:var(--muted);font-size:14px}
+  .disclaimer{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);color:#5a6080;font-size:11.5px;line-height:1.6}
+
+  /* ---- tablette / desktop ---- */
+  @media(min-width:760px){
+    .wrap{padding:0 24px}
+    nav.menu{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+    nav.menu a:hover{color:var(--ink)}
+    .nav-inner{height:64px}
+    .hero-content{padding-top:34vh;padding-bottom:60px}
+    .hero p.lead{font-size:18px}
+    .hero-cta{flex-direction:row}
+    section.block{padding:110px 0}
+    .features{grid-template-columns:repeat(3,1fr);gap:22px}
+    .showcase{grid-template-columns:1fr 1fr;gap:28px}
+    .games{grid-template-columns:repeat(4,1fr);gap:18px}
+    .accessories{grid-template-columns:repeat(3,1fr)}
+  }
 </style>
 </head>
 <body>
 
-<div class="bf-bar">⚡ BLACK FRIDAY — EXCLUSIVE OFFER · <b>NOVA One at $299</b> instead of $600 · while stock lasts</div>
+<div class="bf-bar">BLACK FRIDAY — EXCLUSIVE OFFER · <b>Limited units available</b></div>
 
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="logo" href="index.html"><img class="logo-img" src="logo.png" alt="NOVA" onload="this.classList.add('on')" onerror="this.remove()"><span class="mark"></span><span class="logo-txt">NOVA</span></a>
     <nav class="menu">
-      <a href="#console">The console</a>
       <a href="#tech">Technology</a>
       <a href="#games">Games</a>
-      <a href="#buy">Buy</a>
+      <a href="#accessories">Accessories</a>
     </nav>
     <a class="nav-cta" href="produit.html">Buy NOVA One</a>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="console">
-  <div class="hero-grid"></div>
-  <div class="wrap">
-    <div>
-      <span class="bf-badge">Black Friday — Exclusive Offer</span>
-      <h1 class="hero-title">Play<br>without <span>limits.</span></h1>
-      <p class="lead">The NOVA One erases loading times, pushes graphics beyond reality, and makes every action vibrate in your hands.</p>
-      <div class="price-line">
-        <span class="old">$600</span>
-        <span class="new">$299</span>
-        <span class="save">Save $301 (−50%)</span>
-      </div>
-      <div class="cta-row">
-        <a href="produit.html"><button class="btn btn-primary">Buy now — $299</button></a>
-        <a href="#tech"><button class="btn btn-ghost">Explore the tech</button></a>
-      </div>
-
-      <div class="stock-box">
-        <div class="stock-top">
-          <span class="lbl">Low stock — selling fast</span>
-          <span class="cnt"><b id="stockN">22</b> left</span>
-        </div>
-        <div class="stock-bar"><div class="stock-fill" id="stockFill"></div></div>
-        <div class="stock-note">Black Friday price ends when stock hits zero. <b id="stockWarn">Hurry!</b></div>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="scene">
-        <div class="console3d" id="console3d">
-          <div class="face front">
-            <div class="seam"></div>
-            <div class="rail left"></div>
-            <div class="rail right"></div>
-            <div class="cap top"></div>
-            <div class="cap bot"></div>
-          </div>
-          <div class="face back"></div>
-          <div class="face right-s"></div>
-          <div class="face left-s"></div>
-          <div class="face top-s"></div>
-          <div class="face bot-s"></div>
-        </div>
-        <div class="console-base"></div>
-      </div>
-      <div class="scroll-hint">Scroll to rotate the console ↓</div>
+<!-- HERO : vidéo en fond, texte en bas -->
+<section class="hero" id="top">
+  <div class="hero-video">
+    <video id="heroVid" autoplay muted loop playsinline preload="auto">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-fallback"></div>
+  <div class="hero-vph">Drop <b>hero.mp4</b> here — background video (your product)</div>
+  <div class="hero-grad"></div>
+  <div class="wrap hero-content">
+    <span class="badge-red">Black Friday — Exclusive Offer</span>
+    <h1 class="hero-title">Play<br>without <span>limits.</span></h1>
+    <p class="lead">The NOVA One erases loading times, pushes graphics beyond reality, and makes every action vibrate in your hands.</p>
+    <div class="hero-cta">
+      <a class="btn btn-red" href="produit.html">Discover NOVA One</a>
+      <a class="btn btn-ghost" href="#tech">Explore the tech</a>
     </div>
   </div>
 </section>
@@ -245,21 +187,21 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Technology</span>
-      <h2>Built to disappear.<br>So that only the game remains.</h2>
-      <p>Every component of the NOVA One works toward a single goal: making you forget the machine.</p>
+      <h2>Built to disappear.<br>So only the game remains.</h2>
+      <p>Every component works toward a single goal: making you forget the machine.</p>
     </div>
     <div class="features">
       <div class="feature"><div class="ic"></div><h3>Ultra SSD</h3><p>Worlds that load before you even release the button. No more waiting screens.</p></div>
       <div class="feature"><div class="ic"></div><h3>Haptic controller</h3><p>Feel the rain, the tension of a rope, the recoil of a weapon. Force feedback redefines touch.</p></div>
-      <div class="feature"><div class="ic"></div><h3>3D spatial audio</h3><p>Sound comes from above, behind, everywhere. A single headset is enough to surround you.</p></div>
-      <div class="feature"><div class="ic"></div><h3>4K ray tracing</h3><p>Reflections, shadows and light computed in real time. The line with reality fades away.</p></div>
-      <div class="feature"><div class="ic"></div><h3>120 FPS</h3><p>A fluidity that turns speed into precision. Every frame counts, every reflex too.</p></div>
-      <div class="feature"><div class="ic"></div><h3>Backward compatible</h3><p>Your library follows you. Replay your classics, enhanced by the new NOVA chip.</p></div>
+      <div class="feature"><div class="ic"></div><h3>3D spatial audio</h3><p>Sound comes from above, behind, everywhere. A single headset surrounds you.</p></div>
+      <div class="feature"><div class="ic"></div><h3>4K ray tracing</h3><p>Reflections, shadows and light in real time. The line with reality fades.</p></div>
+      <div class="feature"><div class="ic"></div><h3>120 FPS</h3><p>A fluidity that turns speed into precision. Every frame counts.</p></div>
+      <div class="feature"><div class="ic"></div><h3>Backward compatible</h3><p>Your library follows you, enhanced by the new NOVA chip.</p></div>
     </div>
   </div>
 </section>
 
-<!-- SHOWCASE -->
+<!-- IMMERSION -->
 <section class="block" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap showcase">
     <div class="showcase-img imgslot">
@@ -267,12 +209,12 @@
       <span class="ph">Drop <b>immersion.jpg</b> here<br>(lifestyle / in-game photo)</span>
     </div>
     <div>
+      <span class="eyebrow">Immersion</span>
       <h2>Step inside the image.</h2>
       <p>The NOVA One doesn't just display a game: it places you inside it. Light, sound and touch merge to dissolve the screen.</p>
-      <p>The result: you no longer play in front of a console. You're inside it.</p>
       <div class="stat-row">
         <div class="stat"><b>0.4s</b><span>Load time</span></div>
-        <div class="stat"><b>8K</b><span>Max video output</span></div>
+        <div class="stat"><b>8K</b><span>Max output</span></div>
         <div class="stat"><b>1 TB</b><span>NVMe storage</span></div>
       </div>
     </div>
@@ -285,97 +227,66 @@
     <div class="section-head">
       <span class="eyebrow">The games</span>
       <h2>Worlds built for NOVA.</h2>
-      <p>A selection of fictional titles — replace with your own cover art.</p>
+      <p>Drop your own cover art — the titles and images are yours to change.</p>
     </div>
     <div class="games">
-      <div class="game"><small>Exclusive</small><span>Aether Drift</span></div>
-      <div class="game"><small>Adventure</small><span>Lumen Vale</span></div>
-      <div class="game"><small>Racing</small><span>Hyperline X</span></div>
-      <div class="game"><small>Action</small><span>Null Sector</span></div>
+      <div class="game imgslot"><span class="tag">Exclusive</span><img src="game-1.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">game-1.jpg</span><span class="name">Aether Drift</span></div>
+      <div class="game imgslot"><span class="tag">Adventure</span><img src="game-2.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">game-2.jpg</span><span class="name">Lumen Vale</span></div>
+      <div class="game imgslot"><span class="tag">Racing</span><img src="game-3.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">game-3.jpg</span><span class="name">Hyperline X</span></div>
+      <div class="game imgslot"><span class="tag">Action</span><img src="game-4.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">game-4.jpg</span><span class="name">Null Sector</span></div>
     </div>
   </div>
 </section>
 
-<!-- BUY -->
+<!-- ACCESSORIES -->
+<section class="block" id="accessories" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Accessories</span>
+      <h2>Make it yours.</h2>
+    </div>
+    <div class="accessories">
+      <div class="acc"><div class="acc-img imgslot"><img src="acc-1.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">acc-1.jpg</span></div><div class="acc-txt"><h3>Haptic Controller</h3><p>Adaptive triggers and precision feedback.</p></div></div>
+      <div class="acc"><div class="acc-img imgslot"><img src="acc-2.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">acc-2.jpg</span></div><div class="acc-txt"><h3>NOVA Headset</h3><p>Wireless 3D audio, all-day comfort.</p></div></div>
+      <div class="acc"><div class="acc-img imgslot"><img src="acc-3.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">acc-3.jpg</span></div><div class="acc-txt"><h3>Charging Dock</h3><p>Two controllers, always ready.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUY (pas de prix sur la home) -->
 <section class="block buy" id="buy">
   <div class="wrap">
-    <span class="bf-badge">Black Friday — Exclusive Offer</span>
+    <span class="badge-red">Black Friday — Exclusive Offer</span>
     <h2>The NOVA One is waiting for you.</h2>
-    <p>Standard edition, 1 TB, haptic controller included. Ready to plug in, ready to surprise you.</p>
-    <div class="price-line">
-      <span class="old">$600</span>
-      <span class="new">$299</span>
-      <span class="save">−50%</span>
-    </div>
-    <a href="produit.html"><button class="btn btn-primary">Grab the deal — $299</button></a>
+    <p>Standard edition, 1 TB, haptic controller included. Limited units for Black Friday.</p>
+    <a class="btn btn-red" href="produit.html">See the offer</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div class="foot-inner">
-      <div>
-        <a class="logo" href="index.html"><img class="logo-img" src="logo.png" alt="NOVA" onload="this.classList.add('on')" onerror="this.remove()"><span class="mark"></span><span class="logo-txt">NOVA</span></a>
-        <p style="margin-top:14px;max-width:240px">The console that fades away to leave only the game.</p>
-      </div>
-      <div class="foot-cols">
-        <div class="foot-col"><h4>Console</h4><a href="produit.html">NOVA One</a><a href="#tech">Technology</a><a href="#games">Games</a></div>
-        <div class="foot-col"><h4>Support</h4><a href="#">Help</a><a href="#">Warranty</a><a href="#">Contact</a></div>
-        <div class="foot-col"><h4>Company</h4><a href="#">About</a><a href="#">Press</a><a href="#">Careers</a></div>
-      </div>
+    <a class="logo" href="index.html"><img class="logo-img" src="logo.png" alt="NOVA" onload="this.classList.add('on')" onerror="this.remove()"><span class="mark"></span><span class="logo-txt">NOVA</span></a>
+    <p style="margin-top:12px;max-width:260px;color:var(--muted);font-size:14px">The console that fades away to leave only the game.</p>
+    <div class="foot-cols">
+      <div class="foot-col"><h4>Console</h4><a href="produit.html">NOVA One</a><a href="#tech">Technology</a><a href="#games">Games</a></div>
+      <div class="foot-col"><h4>Support</h4><a href="#">Help</a><a href="#">Warranty</a><a href="#">Contact</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="#">About</a><a href="#">Press</a><a href="#">Careers</a></div>
     </div>
-    <p class="disclaimer">NOVA and NOVA One are a <strong>fictional</strong> brand and product, created as a design exercise. This site represents no real company and is not affiliated with any existing brand. All game names, prices and offers are invented.</p>
+    <p class="disclaimer">NOVA and NOVA One are a <strong>fictional</strong> brand and product, created as a design exercise. This site represents no real company and is not affiliated with any existing brand. All names, prices and offers are invented.</p>
   </div>
 </footer>
 
 <script>
-/* ---------- NOVA 3D console (pure CSS, scroll-driven) ---------- */
-(function(){
-  const el=document.getElementById('console3d');
-  if(!el)return;
-  const baseX=-8;let target=-28,cur=-28;
-  function onScroll(){ target=-28 + window.scrollY*0.12; }
-  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-  (function loop(){cur+=(target-cur)*0.08;el.style.transform='rotateX('+baseX+'deg) rotateY('+cur.toFixed(2)+'deg)';requestAnimationFrame(loop);})();
-})();
-
-/* ---------- Low-stock countdown: 22 -> 5 over 5 minutes ---------- */
-(function(){
-  const nEl=document.getElementById('stockN');
-  const fill=document.getElementById('stockFill');
-  const warn=document.getElementById('stockWarn');
-  if(!nEl)return;
-  const START=22, END=5, MINUTES=5;
-  const steps=START-END;                 // 17 decrements
-  const totalMs=MINUTES*60*1000;
-  let current=START;
-  function render(){
-    nEl.textContent=current;
-    fill.style.width=((current-END)/(START-END)*100)+'%';
-    if(current<=10){warn.textContent='Almost gone!';}
-    if(current<=END){warn.textContent='Last units!';}
-  }
-  render();
-  // décréments répartis sur 5 min, avec un léger aléa pour l'effet "live"
-  let elapsed=0;
-  function scheduleNext(){
-    if(current<=END)return;
-    const base=totalMs/steps;                 // ~17.6 s
-    const jitter=base*(0.5+Math.random());    // 0.5x à 1.5x
-    setTimeout(()=>{
-      current--;
-      render();
-      scheduleNext();
-    }, Math.min(jitter, totalMs-elapsed));
-    elapsed+=base;
-  }
-  scheduleNext();
-})();
-
-/* reveal + nav bg */
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.2});
-document.querySelectorAll('.feature').forEach((el,i)=>{el.style.transitionDelay=(i%3*.08)+'s';io.observe(el)});
-addEventListener('scroll',()=>{document.querySelector('.nav').style.background=scrollY>40?'rgba(6,7,13,.85)':'rgba(6,7,13,.6)'});
+  // vidéo de fond : montre le fallback tant qu'aucune vidéo ne charge
+  (function(){
+    const hero=document.getElementById('top'),v=document.getElementById('heroVid');
+    if(!v)return;
+    v.addEventListener('loadeddata',()=>{ if(v.videoWidth>0) hero.classList.add('has-video'); });
+    v.addEventListener('error',()=>hero.classList.remove('has-video'));
+  })();
+  // reveal
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.15});
+  document.querySelectorAll('.feature').forEach((el,i)=>{el.style.transitionDelay=(i%3*.07)+'s';io.observe(el)});
 </script>
 </body>
 </html>
