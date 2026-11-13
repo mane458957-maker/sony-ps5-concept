@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NOVA One 1 To — Acheter | NOVA</title>
-<meta name="description" content="Fiche produit NOVA One : console next-gen fictive, SSD 1 To, manette haptique. Exercice de design." />
+<title>NOVA One 1 TB — Buy | NOVA</title>
+<meta name="description" content="NOVA One product page: fictional next-gen console, 1 TB SSD, haptic controller. Design exercise." />
 <style>
   :root{
     --bg:#06070d;--bg-2:#0c0e18;--panel:#11131f;--ink:#f2f4ff;--muted:#9aa0bd;
-    --line:rgba(255,255,255,.08);--accent:#22e0ff;--accent-2:#6a5cff;
+    --line:rgba(255,255,255,.08);--accent:#22e0ff;--accent-2:#6a5cff;--bf:#ffb020;
     --glow:0 0 40px rgba(34,224,255,.35);--radius:18px;--maxw:1180px;
     --font:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
   }
@@ -19,40 +19,62 @@
   img{max-width:100%;display:block}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-  header.nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,7,13,.75);border-bottom:1px solid var(--line)}
+  .bf-bar{background:linear-gradient(90deg,#1a1205,#2a1d02,#1a1205);border-bottom:1px solid rgba(255,176,32,.3);text-align:center;padding:9px 16px;font-size:13px;letter-spacing:.08em;color:var(--bf);font-weight:700}
+  .bf-bar b{color:#fff}
+
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,7,13,.75);border-bottom:1px solid var(--line)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.18em;font-size:18px}
   .logo .mark{width:30px;height:30px;border-radius:8px;background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--accent));box-shadow:var(--glow);position:relative}
   .logo .mark::after{content:"";position:absolute;inset:7px;border-radius:4px;background:var(--bg)}
+  /* --- logo image optionnel : dépose un fichier "logo.png" --- */
+  .logo-img{display:none;height:34px;width:auto}
+  .logo-img.on{display:block}
+  .logo-img.on ~ .mark,.logo-img.on ~ .logo-txt{display:none}
+  /* --- emplacements image : repère tant qu'aucun fichier n'est déposé --- */
+  .imgslot{position:relative;overflow:hidden}
+  .imgslot>img{display:none;width:100%;height:100%;object-fit:cover}
+  .imgslot>img.on{display:block}
+  .imgslot>img.on ~ .ph{display:none}
+  .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:16px;line-height:1.6}
+  .ph b{color:var(--accent);letter-spacing:.04em}
   nav.menu{display:flex;gap:28px;font-size:14px;color:var(--muted)}
   nav.menu a:hover{color:var(--ink)}
   .nav-cta{padding:9px 18px;border-radius:999px;font-size:13px;font-weight:700;background:linear-gradient(120deg,var(--accent),var(--accent-2));color:#04121a;box-shadow:var(--glow)}
   @media(max-width:820px){nav.menu{display:none}}
 
-  /* breadcrumb */
-  .crumb{padding:88px 0 0;color:var(--muted);font-size:13px}
+  .crumb{padding:24px 0 0;color:var(--muted);font-size:13px}
   .crumb a:hover{color:var(--accent)}
 
-  /* PRODUCT TOP */
-  .product{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;padding:30px 0 90px;align-items:start}
+  .product{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;padding:24px 0 90px;align-items:start}
   .gallery{position:sticky;top:90px}
-  .gallery-main{aspect-ratio:1/1;border-radius:var(--radius);background:
-      radial-gradient(500px 400px at 50% 30%,rgba(106,92,255,.25),transparent 60%),
-      linear-gradient(160deg,#171a2b,#0a0b14);
-    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase;text-align:center}
+  .gallery-main{position:relative;aspect-ratio:1/1;border-radius:var(--radius);background:radial-gradient(500px 400px at 50% 30%,rgba(106,92,255,.25),transparent 60%),linear-gradient(160deg,#171a2b,#0a0b14);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase;text-align:center}
+  .img-badge{position:absolute;top:16px;left:16px;background:linear-gradient(120deg,var(--bf),#ff7a18);color:#1a1205;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:7px 13px;border-radius:999px;box-shadow:0 0 24px rgba(255,176,32,.4)}
   .thumbs{display:flex;gap:12px;margin-top:14px}
   .thumb{flex:1;aspect-ratio:1/1;border-radius:12px;background:linear-gradient(160deg,#1a1d2e,#0a0b14);border:1px solid var(--line);cursor:pointer;transition:border-color .2s}
   .thumb:hover,.thumb.active{border-color:var(--accent)}
 
-  .info .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-  .info .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+  .bf-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(120deg,var(--bf),#ff7a18);color:#1a1205;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:16px;box-shadow:0 0 24px rgba(255,176,32,.35)}
+  .bf-badge::before{content:"⚡"}
   .info h1{font-size:clamp(30px,4.5vw,46px);font-weight:900;letter-spacing:-.02em;line-height:1.05;margin-bottom:12px}
   .rating{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;margin-bottom:22px}
   .stars{color:var(--accent);letter-spacing:2px}
-  .price{font-size:34px;font-weight:900;margin:8px 0 4px}
-  .price small{font-size:15px;color:var(--muted);font-weight:500}
-  .stock{color:#4be08a;font-size:14px;margin-bottom:24px;display:flex;align-items:center;gap:8px}
-  .stock::before{content:"";width:8px;height:8px;border-radius:50%;background:#4be08a;box-shadow:0 0 10px #4be08a}
+  .price-line{display:flex;align-items:baseline;gap:14px;margin:8px 0 6px;flex-wrap:wrap}
+  .price-line .old{color:var(--muted);text-decoration:line-through;font-size:22px}
+  .price-line .new{font-size:38px;font-weight:900;color:#fff}
+  .price-line .save{background:rgba(255,176,32,.15);color:var(--bf);font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(255,176,32,.35)}
+  .tax{color:var(--muted);font-size:13px;margin-bottom:20px}
+
+  /* stock widget */
+  .stock-box{margin:18px 0 6px;background:var(--panel);border:1px solid rgba(255,176,32,.25);border-radius:14px;padding:16px 18px}
+  .stock-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:10px}
+  .stock-top .lbl{color:var(--muted);letter-spacing:.04em}
+  .stock-top .cnt{color:var(--bf);font-weight:800}
+  .stock-top .cnt b{font-size:17px}
+  .stock-bar{height:7px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+  .stock-fill{height:100%;width:100%;border-radius:999px;background:linear-gradient(90deg,var(--bf),#ff5a18);transition:width .6s ease}
+  .stock-note{margin-top:9px;font-size:12px;color:var(--muted)}
+  .stock-note b{color:#ff6b6b}
 
   .opt-label{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 12px}
   .editions{display:flex;gap:12px;flex-wrap:wrap}
@@ -61,7 +83,7 @@
   .edition b{display:block;font-size:15px}
   .edition span{font-size:13px;color:var(--muted)}
 
-  .buy-row{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .buy-row{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
   .btn{padding:16px 30px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .2s;cursor:pointer;border:0}
   .btn-primary{flex:1;min-width:200px;background:linear-gradient(120deg,var(--accent),var(--accent-2));color:#04121a;box-shadow:var(--glow)}
   .btn-primary:hover{transform:translateY(-2px)}
@@ -72,7 +94,6 @@
   .reassure i{width:18px;height:18px;border-radius:5px;background:linear-gradient(140deg,var(--accent),var(--accent-2));display:inline-block}
   @media(max-width:820px){.product{grid-template-columns:1fr}.gallery{position:static}}
 
-  /* SPECS */
   section.block{padding:90px 0;border-top:1px solid var(--line)}
   .section-head{max-width:620px;margin-bottom:48px}
   .section-head h2{font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-.02em}
@@ -83,7 +104,6 @@
   .spec span:last-child{font-weight:600;text-align:right}
   @media(max-width:820px){.specs{grid-template-columns:1fr}}
 
-  /* HIGHLIGHT */
   .hl{background:var(--bg-2)}
   .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .hl-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px}
@@ -92,7 +112,6 @@
   .hl-card p{color:var(--muted);font-size:14px}
   @media(max-width:820px){.hl-grid{grid-template-columns:1fr}}
 
-  /* FAQ */
   .faq-item{border-bottom:1px solid var(--line)}
   .faq-q{width:100%;text-align:left;background:none;border:0;color:var(--ink);font-size:17px;font-weight:600;padding:22px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px}
   .faq-q .plus{color:var(--accent);font-size:22px;transition:transform .2s;flex-shrink:0}
@@ -111,55 +130,75 @@
 </head>
 <body>
 
+<div class="bf-bar">⚡ BLACK FRIDAY — EXCLUSIVE OFFER · <b>NOVA One at $299</b> instead of $600 · while stock lasts</div>
+
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="logo" href="index.html"><span class="mark"></span>NOVA</a>
+    <a class="logo" href="index.html"><img class="logo-img" src="logo.png" alt="NOVA" onload="this.classList.add('on')" onerror="this.remove()"><span class="mark"></span><span class="logo-txt">NOVA</span></a>
     <nav class="menu">
-      <a href="index.html#tech">Technologie</a>
-      <a href="index.html#jeux">Jeux</a>
-      <a href="produit.html">Acheter</a>
+      <a href="index.html#tech">Technology</a>
+      <a href="index.html#games">Games</a>
+      <a href="produit.html">Buy</a>
     </nav>
-    <a class="nav-cta" href="#acheter">Ajouter au panier</a>
+    <a class="nav-cta" href="#buy">Add to cart</a>
   </div>
 </header>
 
-<div class="wrap crumb"><a href="index.html">Accueil</a> › <a href="index.html#console">Consoles</a> › NOVA One 1 To</div>
+<div class="wrap crumb"><a href="index.html">Home</a> › <a href="index.html#console">Consoles</a> › NOVA One 1 TB</div>
 
 <!-- PRODUCT -->
-<section class="wrap product" id="acheter">
+<section class="wrap product" id="buy">
   <div class="gallery">
-    <div class="gallery-main" id="mainImg">[ Visuel produit principal<br>à remplacer ]</div>
+    <div class="gallery-main imgslot" id="mainImg">
+      <span class="img-badge" style="z-index:3">Black Friday −50%</span>
+      <img src="product-1.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()">
+      <span class="ph">Drop <b>product-1.jpg</b> here<br>(main product photo)</span>
+    </div>
     <div class="thumbs">
-      <div class="thumb active"></div>
-      <div class="thumb"></div>
-      <div class="thumb"></div>
-      <div class="thumb"></div>
+      <div class="thumb imgslot active"><img src="product-1.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph" style="font-size:10px">1</span></div>
+      <div class="thumb imgslot"><img src="product-2.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph" style="font-size:10px">2</span></div>
+      <div class="thumb imgslot"><img src="product-3.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph" style="font-size:10px">3</span></div>
+      <div class="thumb imgslot"><img src="product-4.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph" style="font-size:10px">4</span></div>
     </div>
   </div>
 
   <div class="info">
-    <span class="eyebrow">NOVA One</span>
-    <h1>NOVA One — Édition 1 To</h1>
-    <div class="rating"><span class="stars">★★★★★</span> 4,9 · 2 148 avis</div>
-    <div class="price">549,00 € <small>TTC</small></div>
-    <div class="stock">En stock — expédié sous 48 h</div>
+    <span class="bf-badge">Black Friday — Exclusive Offer</span>
+    <h1>NOVA One — 1 TB Edition</h1>
+    <div class="rating"><span class="stars">★★★★★</span> 4.9 · 2,148 reviews</div>
 
-    <div class="opt-label">Choisissez votre édition</div>
+    <div class="price-line">
+      <span class="old">$600</span>
+      <span class="new">$299</span>
+      <span class="save">Save $301 (−50%)</span>
+    </div>
+    <div class="tax">Tax included · Free shipping</div>
+
+    <div class="stock-box">
+      <div class="stock-top">
+        <span class="lbl">Low stock — selling fast</span>
+        <span class="cnt"><b id="stockN">22</b> left</span>
+      </div>
+      <div class="stock-bar"><div class="stock-fill" id="stockFill"></div></div>
+      <div class="stock-note">Black Friday price ends when stock hits zero. <b id="stockWarn">Hurry!</b></div>
+    </div>
+
+    <div class="opt-label">Choose your edition</div>
     <div class="editions">
-      <div class="edition active" data-price="549,00 €"><b>Standard 1 To</b><span>Lecteur disque inclus</span></div>
-      <div class="edition" data-price="469,00 €"><b>Digital 1 To</b><span>100 % dématérialisé</span></div>
-      <div class="edition" data-price="629,00 €"><b>Pack + 2e manette</b><span>Prêt à jouer à deux</span></div>
+      <div class="edition active" data-price="$299"><b>Standard 1 TB</b><span>Disc drive included</span></div>
+      <div class="edition" data-price="$269"><b>Digital 1 TB</b><span>100% digital</span></div>
+      <div class="edition" data-price="$349"><b>Bundle + 2nd controller</b><span>Ready for two players</span></div>
     </div>
 
     <div class="buy-row">
-      <button class="btn btn-primary" id="addBtn">Ajouter au panier — <span id="btnPrice">549,00 €</span></button>
-      <button class="btn btn-ghost">Acheter maintenant</button>
+      <button class="btn btn-primary" id="addBtn">Add to cart — <span id="btnPrice">$299</span></button>
+      <button class="btn btn-ghost">Buy now</button>
     </div>
 
     <div class="reassure">
-      <div><i></i> Livraison offerte</div>
-      <div><i></i> Garantie 2 ans</div>
-      <div><i></i> Retour 30 jours</div>
+      <div><i></i> Free shipping</div>
+      <div><i></i> 2-year warranty</div>
+      <div><i></i> 30-day returns</div>
     </div>
   </div>
 </section>
@@ -167,16 +206,16 @@
 <!-- SPECS -->
 <section class="block">
   <div class="wrap">
-    <div class="section-head"><h2>Spécifications</h2><p>Tout ce qui fait battre la NOVA One. Chiffres fictifs, à ajuster pour ton exposé.</p></div>
+    <div class="section-head"><h2>Specifications</h2><p>Everything that makes the NOVA One tick. Fictional figures, tune them for your presentation.</p></div>
     <div class="specs">
-      <div class="spec"><span>Processeur</span><span>NOVA Core X8 — 8 cœurs</span></div>
-      <div class="spec"><span>Carte graphique</span><span>GPU NOVA RT — 12 Tflops</span></div>
-      <div class="spec"><span>Mémoire</span><span>16 Go GDDR6</span></div>
-      <div class="spec"><span>Stockage</span><span>SSD NVMe 1 To</span></div>
-      <div class="spec"><span>Résolution max</span><span>8K · 60 Hz / 4K · 120 Hz</span></div>
-      <div class="spec"><span>Audio</span><span>Moteur spatial NOVA 3D</span></div>
-      <div class="spec"><span>Manette</span><span>Haptique + gâchettes adaptatives</span></div>
-      <div class="spec"><span>Connectique</span><span>HDMI 2.1 · USB-C · 2× USB-A</span></div>
+      <div class="spec"><span>Processor</span><span>NOVA Core X8 — 8 cores</span></div>
+      <div class="spec"><span>Graphics</span><span>NOVA RT GPU — 12 Tflops</span></div>
+      <div class="spec"><span>Memory</span><span>16 GB GDDR6</span></div>
+      <div class="spec"><span>Storage</span><span>1 TB NVMe SSD</span></div>
+      <div class="spec"><span>Max resolution</span><span>8K · 60 Hz / 4K · 120 Hz</span></div>
+      <div class="spec"><span>Audio</span><span>NOVA 3D spatial engine</span></div>
+      <div class="spec"><span>Controller</span><span>Haptic + adaptive triggers</span></div>
+      <div class="spec"><span>Connectivity</span><span>HDMI 2.1 · USB-C · 2× USB-A</span></div>
     </div>
   </div>
 </section>
@@ -184,11 +223,11 @@
 <!-- HIGHLIGHTS -->
 <section class="block hl">
   <div class="wrap">
-    <div class="section-head"><h2>Pourquoi la NOVA One</h2></div>
+    <div class="section-head"><h2>Why the NOVA One</h2></div>
     <div class="hl-grid">
-      <div class="hl-card"><div class="ic"></div><h3>Zéro attente</h3><p>Le SSD Ultra charge vos mondes en une fraction de seconde. Vous jouez, point.</p></div>
-      <div class="hl-card"><div class="ic"></div><h3>Ressentez tout</h3><p>La manette haptique traduit chaque texture, chaque impact, directement dans vos mains.</p></div>
-      <div class="hl-card"><div class="ic"></div><h3>Vu comme jamais</h3><p>Ray tracing temps réel et sortie 8K : la lumière devient réelle à l'écran.</p></div>
+      <div class="hl-card"><div class="ic"></div><h3>Zero waiting</h3><p>The Ultra SSD loads your worlds in a fraction of a second. You just play.</p></div>
+      <div class="hl-card"><div class="ic"></div><h3>Feel everything</h3><p>The haptic controller translates every texture, every impact, straight into your hands.</p></div>
+      <div class="hl-card"><div class="ic"></div><h3>Seen like never before</h3><p>Real-time ray tracing and 8K output: light becomes real on screen.</p></div>
     </div>
   </div>
 </section>
@@ -196,11 +235,11 @@
 <!-- FAQ -->
 <section class="block">
   <div class="wrap" style="max-width:760px">
-    <div class="section-head"><h2>Questions fréquentes</h2></div>
-    <div class="faq-item"><button class="faq-q">La NOVA One lit-elle les jeux de l'ancienne génération ?<span class="plus">+</span></button><div class="faq-a"><div>Oui. La NOVA One est rétro-compatible avec la quasi-totalité du catalogue précédent, et la puce NOVA en améliore automatiquement la fluidité.</div></div></div>
-    <div class="faq-item"><button class="faq-q">Quelle est la différence entre l'édition Standard et Digital ?<span class="plus">+</span></button><div class="faq-a"><div>L'édition Standard intègre un lecteur de disque ; l'édition Digital est 100 % dématérialisée et un peu moins chère. Les performances sont identiques.</div></div></div>
-    <div class="faq-item"><button class="faq-q">La manette est-elle incluse ?<span class="plus">+</span></button><div class="faq-a"><div>Une manette haptique est fournie avec chaque édition. Le pack « 2e manette » en ajoute une seconde pour jouer à deux dès la sortie de la boîte.</div></div></div>
-    <div class="faq-item"><button class="faq-q">Quelle garantie ?<span class="plus">+</span></button><div class="faq-a"><div>Deux ans, avec retour gratuit sous 30 jours. (Conditions fictives, à adapter.)</div></div></div>
+    <div class="section-head"><h2>Frequently asked questions</h2></div>
+    <div class="faq-item"><button class="faq-q">Does the NOVA One play previous-generation games?<span class="plus">+</span></button><div class="faq-a"><div>Yes. The NOVA One is backward compatible with nearly the entire previous catalog, and the NOVA chip automatically improves their fluidity.</div></div></div>
+    <div class="faq-item"><button class="faq-q">What's the difference between Standard and Digital?<span class="plus">+</span></button><div class="faq-a"><div>The Standard edition includes a disc drive; the Digital edition is 100% digital and a little cheaper. Performance is identical.</div></div></div>
+    <div class="faq-item"><button class="faq-q">Is the controller included?<span class="plus">+</span></button><div class="faq-a"><div>A haptic controller ships with every edition. The "2nd controller" bundle adds a second one so you can play together right out of the box.</div></div></div>
+    <div class="faq-item"><button class="faq-q">How long does the Black Friday price last?<span class="plus">+</span></button><div class="faq-a"><div>The $299 price is a limited Black Friday offer, valid while stock lasts. (Fictional terms, adjust as needed.)</div></div></div>
   </div>
 </section>
 
@@ -208,21 +247,21 @@
   <div class="wrap">
     <div class="foot-inner">
       <div>
-        <a class="logo" href="index.html"><span class="mark"></span>NOVA</a>
-        <p style="margin-top:14px;max-width:240px">La console qui s'efface pour ne laisser que le jeu.</p>
+        <a class="logo" href="index.html"><img class="logo-img" src="logo.png" alt="NOVA" onload="this.classList.add('on')" onerror="this.remove()"><span class="mark"></span><span class="logo-txt">NOVA</span></a>
+        <p style="margin-top:14px;max-width:240px">The console that fades away to leave only the game.</p>
       </div>
       <div class="foot-cols">
-        <div class="foot-col"><h4>Console</h4><a href="produit.html">NOVA One</a><a href="index.html#tech">Technologie</a><a href="index.html#jeux">Jeux</a></div>
-        <div class="foot-col"><h4>Support</h4><a href="#">Assistance</a><a href="#">Garantie</a><a href="#">Contact</a></div>
-        <div class="foot-col"><h4>Société</h4><a href="#">À propos</a><a href="#">Presse</a><a href="#">Carrières</a></div>
+        <div class="foot-col"><h4>Console</h4><a href="produit.html">NOVA One</a><a href="index.html#tech">Technology</a><a href="index.html#games">Games</a></div>
+        <div class="foot-col"><h4>Support</h4><a href="#">Help</a><a href="#">Warranty</a><a href="#">Contact</a></div>
+        <div class="foot-col"><h4>Company</h4><a href="#">About</a><a href="#">Press</a><a href="#">Careers</a></div>
       </div>
     </div>
-    <p class="disclaimer">NOVA et NOVA One sont une marque et un produit <strong>fictifs</strong>, créés dans le cadre d'un exercice de design. Ce site ne représente aucune entreprise réelle et n'est affilié à aucune marque existante. Prix, avis et spécifications sont inventés.</p>
+    <p class="disclaimer">NOVA and NOVA One are a <strong>fictional</strong> brand and product, created as a design exercise. This site represents no real company and is not affiliated with any existing brand. Prices, reviews, offers and specifications are invented.</p>
   </div>
 </footer>
 
 <script>
-  // éditions
+  // editions
   document.querySelectorAll('.edition').forEach(ed=>{
     ed.addEventListener('click',()=>{
       document.querySelectorAll('.edition').forEach(e=>e.classList.remove('active'));
@@ -230,10 +269,10 @@
       document.getElementById('btnPrice').textContent=ed.dataset.price;
     });
   });
-  // panier (démo)
+  // cart (demo)
   document.getElementById('addBtn').addEventListener('click',()=>{
     const b=document.getElementById('addBtn');const t=b.innerHTML;
-    b.textContent='✓ Ajouté au panier';setTimeout(()=>b.innerHTML=t,1600);
+    b.textContent='✓ Added to cart';setTimeout(()=>b.innerHTML=t,1600);
   });
   // thumbs
   document.querySelectorAll('.thumb').forEach(t=>t.addEventListener('click',()=>{
@@ -244,6 +283,21 @@
     const a=q.nextElementSibling;q.classList.toggle('open');
     a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px';
   }));
+  // low-stock countdown 22 -> 5 over 5 minutes
+  (function(){
+    const nEl=document.getElementById('stockN'),fill=document.getElementById('stockFill'),warn=document.getElementById('stockWarn');
+    if(!nEl)return;
+    const START=22,END=5,MINUTES=5,steps=START-END,totalMs=MINUTES*60*1000;
+    let current=START,elapsed=0;
+    function render(){nEl.textContent=current;fill.style.width=((current-END)/(START-END)*100)+'%';if(current<=10)warn.textContent='Almost gone!';if(current<=END)warn.textContent='Last units!';}
+    render();
+    (function next(){
+      if(current<=END)return;
+      const base=totalMs/steps,jitter=base*(0.5+Math.random());
+      setTimeout(()=>{current--;render();next();},Math.min(jitter,totalMs-elapsed));
+      elapsed+=base;
+    })();
+  })();
 </script>
 </body>
 </html>

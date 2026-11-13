@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NOVA One — La console next-gen</title>
-<meta name="description" content="NOVA One : immersion totale, SSD ultra-rapide, manette haptique. Une console fictive créée comme exercice de design." />
+<title>NOVA One — The next-gen console</title>
+<meta name="description" content="NOVA One: total immersion, ultra-fast SSD, haptic controller. A fictional console built as a design exercise." />
 <style>
   :root{
     --bg:#06070d;
@@ -15,6 +15,7 @@
     --line:rgba(255,255,255,.08);
     --accent:#22e0ff;
     --accent-2:#6a5cff;
+    --bf:#ffb020;
     --glow:0 0 40px rgba(34,224,255,.35);
     --radius:18px;
     --maxw:1180px;
@@ -22,83 +23,83 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    font-family:var(--font);
-    background:var(--bg);
-    color:var(--ink);
-    overflow-x:hidden;
-    line-height:1.5;
-  }
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.5}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
+  /* ---------- BLACK FRIDAY TOP BAR ---------- */
+  .bf-bar{background:linear-gradient(90deg,#1a1205,#2a1d02,#1a1205);border-bottom:1px solid rgba(255,176,32,.3);text-align:center;padding:9px 16px;font-size:13px;letter-spacing:.08em;color:var(--bf);font-weight:700}
+  .bf-bar b{color:#fff}
+
   /* ---------- NAV ---------- */
-  header.nav{
-    position:fixed;top:0;left:0;right:0;z-index:50;
-    backdrop-filter:blur(14px);
-    background:rgba(6,7,13,.6);
-    border-bottom:1px solid var(--line);
-    transition:background .3s;
-  }
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,7,13,.6);border-bottom:1px solid var(--line);transition:background .3s}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.18em;font-size:18px}
-  .logo .mark{
-    width:30px;height:30px;border-radius:8px;
-    background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--accent));
-    box-shadow:var(--glow);
-    position:relative;
-  }
-  .logo .mark::after{
-    content:"";position:absolute;inset:7px;border-radius:4px;background:var(--bg);
-  }
+  .logo .mark{width:30px;height:30px;border-radius:8px;background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--accent));box-shadow:var(--glow);position:relative}
+  .logo .mark::after{content:"";position:absolute;inset:7px;border-radius:4px;background:var(--bg)}
+  /* --- logo image optionnel : dépose un fichier "logo.png" --- */
+  .logo-img{display:none;height:34px;width:auto}
+  .logo-img.on{display:block}
+  .logo-img.on ~ .mark,.logo-img.on ~ .logo-txt{display:none}
+  /* --- emplacements image : repère tant qu'aucun fichier n'est déposé --- */
+  .imgslot{position:relative;overflow:hidden}
+  .imgslot>img{display:none;width:100%;height:100%;object-fit:cover}
+  .imgslot>img.on{display:block}
+  .imgslot>img.on ~ .ph{display:none}
+  .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:16px;line-height:1.6}
+  .ph b{color:var(--accent);letter-spacing:.04em}
   nav.menu{display:flex;gap:28px;font-size:14px;color:var(--muted)}
   nav.menu a:hover{color:var(--ink)}
-  .nav-cta{
-    padding:9px 18px;border-radius:999px;font-size:13px;font-weight:700;
-    background:linear-gradient(120deg,var(--accent),var(--accent-2));
-    color:#04121a;box-shadow:var(--glow);
-  }
+  .nav-cta{padding:9px 18px;border-radius:999px;font-size:13px;font-weight:700;background:linear-gradient(120deg,var(--accent),var(--accent-2));color:#04121a;box-shadow:var(--glow)}
   @media(max-width:820px){nav.menu{display:none}}
 
   /* ---------- HERO ---------- */
-  .hero{
-    position:relative;min-height:100vh;display:flex;align-items:center;
-    background:
-      radial-gradient(1000px 600px at 70% 20%,rgba(106,92,255,.25),transparent 60%),
-      radial-gradient(800px 500px at 20% 80%,rgba(34,224,255,.18),transparent 60%),
-      var(--bg);
-    overflow:hidden;
-  }
+  .hero{position:relative;min-height:92vh;display:flex;align-items:center;background:radial-gradient(1000px 600px at 70% 20%,rgba(106,92,255,.25),transparent 60%),radial-gradient(800px 500px at 20% 80%,rgba(34,224,255,.18),transparent 60%),var(--bg);overflow:hidden}
   .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(circle at 50% 40%,#000,transparent 75%);opacity:.5}
-  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:90px;padding-bottom:60px}
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
-  .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:70px;padding-bottom:60px}
+  .bf-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(120deg,var(--bf),#ff7a18);color:#1a1205;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:20px;box-shadow:0 0 30px rgba(255,176,32,.4)}
+  .bf-badge::before{content:"⚡"}
   h1.hero-title{font-size:clamp(44px,7vw,86px);line-height:.98;font-weight:900;letter-spacing:-.02em}
   h1.hero-title span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero p.lead{color:var(--muted);font-size:clamp(16px,2vw,19px);margin:24px 0 34px;max-width:480px}
+  .hero p.lead{color:var(--muted);font-size:clamp(16px,2vw,19px);margin:24px 0 20px;max-width:480px}
+  .price-line{display:flex;align-items:baseline;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+  .price-line .old{color:var(--muted);text-decoration:line-through;font-size:22px}
+  .price-line .new{font-size:40px;font-weight:900;color:#fff}
+  .price-line .save{background:rgba(255,176,32,.15);color:var(--bf);font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid rgba(255,176,32,.35)}
   .cta-row{display:flex;gap:14px;flex-wrap:wrap}
   .btn{padding:15px 30px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s;cursor:pointer;border:0}
   .btn-primary{background:linear-gradient(120deg,var(--accent),var(--accent-2));color:#04121a;box-shadow:var(--glow)}
   .btn-primary:hover{transform:translateY(-2px)}
   .btn-ghost{border:1px solid var(--line);color:var(--ink);background:transparent}
   .btn-ghost:hover{border-color:var(--accent)}
+
+  /* stock widget */
+  .stock-box{margin-top:26px;max-width:360px;background:var(--panel);border:1px solid rgba(255,176,32,.25);border-radius:14px;padding:16px 18px}
+  .stock-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:10px}
+  .stock-top .lbl{color:var(--muted);letter-spacing:.04em}
+  .stock-top .cnt{color:var(--bf);font-weight:800}
+  .stock-top .cnt b{font-size:17px}
+  .stock-bar{height:7px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+  .stock-fill{height:100%;width:100%;border-radius:999px;background:linear-gradient(90deg,var(--bf),#ff5a18);transition:width .6s ease}
+  .stock-note{margin-top:9px;font-size:12px;color:var(--muted)}
+  .stock-note b{color:#ff6b6b}
+
+  /* hero visual / 3D */
   .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:500px}
   .scene{width:260px;height:460px;perspective:1100px;position:relative;display:flex;align-items:center;justify-content:center}
   .console3d{width:200px;height:320px;position:relative;transform-style:preserve-3d;transform:rotateX(-8deg) rotateY(-28deg);will-change:transform;animation:floaty 6s ease-in-out infinite}
   @keyframes floaty{0%,100%{margin-top:0}50%{margin-top:-14px}}
   .face{position:absolute;overflow:hidden}
-  /* faces avant/arrière : 200 x 320, profondeur 70 => translateZ ±35 */
   .front,.back{width:200px;height:320px;border-radius:16px}
   .front{transform:translateZ(35px);background:linear-gradient(150deg,#20243a,#0a0b14);border:1px solid rgba(255,255,255,.08)}
-  .back{transform:translateZ(-35px) rotateY(180deg);background:linear-gradient(150deg,#15182400,#06070d);background-color:#0a0b14;border:1px solid rgba(255,255,255,.05)}
+  .back{transform:translateZ(-35px) rotateY(180deg);background-color:#0a0b14;border:1px solid rgba(255,255,255,.05)}
   .right-s,.left-s{width:70px;height:320px;top:0}
   .right-s{left:65px;transform:rotateY(90deg) translateZ(100px);background:linear-gradient(#2a2e40,#0e1018)}
   .left-s{left:65px;transform:rotateY(-90deg) translateZ(100px);background:linear-gradient(#2a2e40,#0e1018)}
   .top-s,.bot-s{width:200px;height:70px;left:0}
   .top-s{top:125px;transform:rotateX(90deg) translateZ(160px);background:linear-gradient(90deg,#2a2e40,#1a1d2e)}
   .bot-s{top:125px;transform:rotateX(-90deg) translateZ(160px);background:#0a0b14}
-  /* détails sur la face avant */
   .seam{position:absolute;left:50%;top:26px;transform:translateX(-50%);width:6px;height:268px;border-radius:4px;background:linear-gradient(var(--accent),var(--accent-2));box-shadow:0 0 18px var(--accent),0 0 40px rgba(34,224,255,.5)}
   .rail{position:absolute;top:14px;width:16px;height:292px;border-radius:8px;background:linear-gradient(#3a3f58,#191c2b)}
   .rail.left{left:20px}.rail.right{right:20px}
@@ -107,21 +108,7 @@
   .console-base{position:absolute;bottom:14px;left:50%;transform:translateX(-50%) rotateX(72deg);width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(34,224,255,.18),transparent 62%);border:2px solid rgba(34,224,255,.35);box-shadow:0 0 40px rgba(34,224,255,.25)}
   .scroll-hint{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);animation:fadePulse 2.4s ease-in-out infinite;white-space:nowrap}
   @keyframes fadePulse{0%,100%{opacity:.35}50%{opacity:.9}}
-  .console-ph{
-    width:100%;max-width:420px;aspect-ratio:4/5;border-radius:24px;
-    background:linear-gradient(160deg,#1a1d2e,#0a0b14);
-    border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase;
-    position:relative;overflow:hidden;
-    box-shadow:0 40px 100px rgba(0,0,0,.6);
-    animation:float 6s ease-in-out infinite;
-  }
-  .console-ph::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(34,224,255,.12),transparent 30%);animation:spin 8s linear infinite}
-  .console-ph span{position:relative;z-index:2;text-align:center;padding:20px}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-  @keyframes spin{to{transform:rotate(360deg)}}
-  @media(max-width:820px){.hero .wrap{grid-template-columns:1fr;text-align:center}.eyebrow,.hero p.lead{margin-left:auto;margin-right:auto}.cta-row{justify-content:center}}
+  @media(max-width:820px){.hero .wrap{grid-template-columns:1fr;text-align:center}.bf-badge,.hero p.lead,.price-line,.stock-box{margin-left:auto;margin-right:auto}.price-line,.cta-row{justify-content:center}.stock-top{text-align:left}}
 
   /* ---------- MARQUEE ---------- */
   .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);overflow:hidden;white-space:nowrap}
@@ -133,16 +120,13 @@
   /* ---------- SECTIONS ---------- */
   section.block{padding:120px 0;position:relative}
   .section-head{max-width:620px;margin-bottom:64px}
-  .section-head .eyebrow{margin-bottom:16px}
+  .section-head .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+  .section-head .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
   .section-head h2{font-size:clamp(30px,4.5vw,50px);font-weight:900;letter-spacing:-.02em;line-height:1.05}
   .section-head p{color:var(--muted);margin-top:18px;font-size:17px}
 
   .features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .feature{
-    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-    padding:34px 28px;transition:transform .3s,border-color .3s;
-    opacity:0;transform:translateY(30px);
-  }
+  .feature{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;transition:transform .3s,border-color .3s;opacity:0;transform:translateY(30px)}
   .feature.in{opacity:1;transform:none}
   .feature:hover{transform:translateY(-6px);border-color:var(--accent)}
   .feature .ic{width:48px;height:48px;border-radius:12px;background:linear-gradient(140deg,var(--accent),var(--accent-2));margin-bottom:22px;box-shadow:var(--glow)}
@@ -150,7 +134,6 @@
   .feature p{color:var(--muted);font-size:15px}
   @media(max-width:820px){.features{grid-template-columns:1fr}}
 
-  /* ---------- SHOWCASE ---------- */
   .showcase{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
   .showcase-img{aspect-ratio:16/11;border-radius:var(--radius);background:linear-gradient(160deg,#171a2b,#0a0b14);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
   .showcase h2{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.02em;line-height:1.05;margin-bottom:18px}
@@ -160,7 +143,6 @@
   .stat span{display:block;color:var(--muted);font-size:13px;margin-top:4px}
   @media(max-width:820px){.showcase{grid-template-columns:1fr}}
 
-  /* ---------- GAMES ---------- */
   .games{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
   .game{aspect-ratio:3/4;border-radius:14px;background:linear-gradient(160deg,#1a1d2e,#0a0b14);border:1px solid var(--line);position:relative;overflow:hidden;cursor:pointer;transition:transform .3s}
   .game:hover{transform:scale(1.03);border-color:var(--accent)}
@@ -168,16 +150,11 @@
   .game small{position:absolute;top:14px;left:14px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
   @media(max-width:820px){.games{grid-template-columns:repeat(2,1fr)}}
 
-  /* ---------- BUY CTA ---------- */
-  .buy{position:relative;text-align:center;background:
-      radial-gradient(600px 400px at 50% 0%,rgba(106,92,255,.25),transparent 60%),var(--bg-2);
-    border-top:1px solid var(--line)}
+  .buy{position:relative;text-align:center;background:radial-gradient(600px 400px at 50% 0%,rgba(106,92,255,.25),transparent 60%),var(--bg-2);border-top:1px solid var(--line)}
   .buy h2{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-.02em;margin-bottom:18px}
-  .buy p{color:var(--muted);max-width:460px;margin:0 auto 32px;font-size:17px}
-  .price-tag{font-size:20px;color:var(--ink);margin-bottom:28px}
-  .price-tag b{color:var(--accent);font-size:26px}
+  .buy p{color:var(--muted);max-width:460px;margin:0 auto 24px;font-size:17px}
+  .buy .price-line{justify-content:center;margin-bottom:28px}
 
-  /* ---------- FOOTER ---------- */
   footer{border-top:1px solid var(--line);background:var(--bg);padding:50px 0 40px}
   .foot-inner{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;color:var(--muted);font-size:13px}
   .foot-cols{display:flex;gap:60px;flex-wrap:wrap}
@@ -189,16 +166,18 @@
 </head>
 <body>
 
+<div class="bf-bar">⚡ BLACK FRIDAY — EXCLUSIVE OFFER · <b>NOVA One at $299</b> instead of $600 · while stock lasts</div>
+
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="logo" href="index.html"><span class="mark"></span>NOVA</a>
+    <a class="logo" href="index.html"><img class="logo-img" src="logo.png" alt="NOVA" onload="this.classList.add('on')" onerror="this.remove()"><span class="mark"></span><span class="logo-txt">NOVA</span></a>
     <nav class="menu">
-      <a href="#console">La console</a>
-      <a href="#tech">Technologie</a>
-      <a href="#jeux">Jeux</a>
-      <a href="#acheter">Acheter</a>
+      <a href="#console">The console</a>
+      <a href="#tech">Technology</a>
+      <a href="#games">Games</a>
+      <a href="#buy">Buy</a>
     </nav>
-    <a class="nav-cta" href="produit.html">Acheter la NOVA One</a>
+    <a class="nav-cta" href="produit.html">Buy NOVA One</a>
   </div>
 </header>
 
@@ -207,14 +186,29 @@
   <div class="hero-grid"></div>
   <div class="wrap">
     <div>
-      <span class="eyebrow">Nouvelle génération</span>
-      <h1 class="hero-title">Jouez<br>sans <span>limites.</span></h1>
-      <p class="lead">La NOVA One efface les temps de chargement, pousse les graphismes au-delà du réel et fait vibrer chaque action dans vos mains.</p>
+      <span class="bf-badge">Black Friday — Exclusive Offer</span>
+      <h1 class="hero-title">Play<br>without <span>limits.</span></h1>
+      <p class="lead">The NOVA One erases loading times, pushes graphics beyond reality, and makes every action vibrate in your hands.</p>
+      <div class="price-line">
+        <span class="old">$600</span>
+        <span class="new">$299</span>
+        <span class="save">Save $301 (−50%)</span>
+      </div>
       <div class="cta-row">
-        <a href="produit.html"><button class="btn btn-primary">Acheter — 549 €</button></a>
-        <a href="#tech"><button class="btn btn-ghost">Découvrir la tech</button></a>
+        <a href="produit.html"><button class="btn btn-primary">Buy now — $299</button></a>
+        <a href="#tech"><button class="btn btn-ghost">Explore the tech</button></a>
+      </div>
+
+      <div class="stock-box">
+        <div class="stock-top">
+          <span class="lbl">Low stock — selling fast</span>
+          <span class="cnt"><b id="stockN">22</b> left</span>
+        </div>
+        <div class="stock-bar"><div class="stock-fill" id="stockFill"></div></div>
+        <div class="stock-note">Black Friday price ends when stock hits zero. <b id="stockWarn">Hurry!</b></div>
       </div>
     </div>
+
     <div class="hero-visual">
       <div class="scene">
         <div class="console3d" id="console3d">
@@ -233,7 +227,7 @@
         </div>
         <div class="console-base"></div>
       </div>
-      <div class="scroll-hint">Scrollez pour faire tourner la console ↓</div>
+      <div class="scroll-hint">Scroll to rotate the console ↓</div>
     </div>
   </div>
 </section>
@@ -241,8 +235,8 @@
 <!-- MARQUEE -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>SSD <b>ULTRA</b></span><span>RAY TRACING <b>4K</b></span><span>HAPTIQUE <b>NOVA</b></span><span>120 <b>FPS</b></span><span>AUDIO <b>3D</b></span>
-    <span>SSD <b>ULTRA</b></span><span>RAY TRACING <b>4K</b></span><span>HAPTIQUE <b>NOVA</b></span><span>120 <b>FPS</b></span><span>AUDIO <b>3D</b></span>
+    <span>SSD <b>ULTRA</b></span><span>RAY TRACING <b>4K</b></span><span>HAPTIC <b>NOVA</b></span><span>120 <b>FPS</b></span><span>3D <b>AUDIO</b></span>
+    <span>SSD <b>ULTRA</b></span><span>RAY TRACING <b>4K</b></span><span>HAPTIC <b>NOVA</b></span><span>120 <b>FPS</b></span><span>3D <b>AUDIO</b></span>
   </div>
 </div>
 
@@ -250,17 +244,17 @@
 <section class="block" id="tech">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">La technologie</span>
-      <h2>Conçue pour disparaître.<br>Pour qu'il ne reste que le jeu.</h2>
-      <p>Chaque composant de la NOVA One travaille dans un seul but : vous faire oublier la machine.</p>
+      <span class="eyebrow">Technology</span>
+      <h2>Built to disappear.<br>So that only the game remains.</h2>
+      <p>Every component of the NOVA One works toward a single goal: making you forget the machine.</p>
     </div>
     <div class="features">
-      <div class="feature"><div class="ic"></div><h3>SSD Ultra</h3><p>Des mondes qui se chargent avant même que vous ne lâchiez le bouton. Fini les écrans d'attente.</p></div>
-      <div class="feature"><div class="ic"></div><h3>Manette haptique</h3><p>Sentez la pluie, la tension d'une corde, le recul d'une arme. Le retour de force redessine le toucher.</p></div>
-      <div class="feature"><div class="ic"></div><h3>Audio spatial 3D</h3><p>Le son vient d'au-dessus, de derrière, de partout. Un simple casque suffit à vous entourer.</p></div>
-      <div class="feature"><div class="ic"></div><h3>Ray tracing 4K</h3><p>Des reflets, des ombres et des lumières calculés en temps réel. La frontière avec le réel s'efface.</p></div>
-      <div class="feature"><div class="ic"></div><h3>120 FPS</h3><p>Une fluidité qui transforme la vitesse en précision. Chaque image compte, chaque réflexe aussi.</p></div>
-      <div class="feature"><div class="ic"></div><h3>Rétro-compatible</h3><p>Votre bibliothèque vous suit. Rejouez vos classiques, sublimés par la nouvelle puce NOVA.</p></div>
+      <div class="feature"><div class="ic"></div><h3>Ultra SSD</h3><p>Worlds that load before you even release the button. No more waiting screens.</p></div>
+      <div class="feature"><div class="ic"></div><h3>Haptic controller</h3><p>Feel the rain, the tension of a rope, the recoil of a weapon. Force feedback redefines touch.</p></div>
+      <div class="feature"><div class="ic"></div><h3>3D spatial audio</h3><p>Sound comes from above, behind, everywhere. A single headset is enough to surround you.</p></div>
+      <div class="feature"><div class="ic"></div><h3>4K ray tracing</h3><p>Reflections, shadows and light computed in real time. The line with reality fades away.</p></div>
+      <div class="feature"><div class="ic"></div><h3>120 FPS</h3><p>A fluidity that turns speed into precision. Every frame counts, every reflex too.</p></div>
+      <div class="feature"><div class="ic"></div><h3>Backward compatible</h3><p>Your library follows you. Replay your classics, enhanced by the new NOVA chip.</p></div>
     </div>
   </div>
 </section>
@@ -268,44 +262,52 @@
 <!-- SHOWCASE -->
 <section class="block" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap showcase">
-    <div class="showcase-img">[ Visuel immersion à remplacer ]</div>
+    <div class="showcase-img imgslot">
+      <img src="immersion.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()">
+      <span class="ph">Drop <b>immersion.jpg</b> here<br>(lifestyle / in-game photo)</span>
+    </div>
     <div>
-      <h2>Entrez dans l'image.</h2>
-      <p>La NOVA One ne se contente pas d'afficher un jeu : elle vous place à l'intérieur. Lumière, son et toucher fusionnent pour dissoudre l'écran.</p>
-      <p>Résultat : vous ne jouez plus devant une console. Vous êtes dedans.</p>
+      <h2>Step inside the image.</h2>
+      <p>The NOVA One doesn't just display a game: it places you inside it. Light, sound and touch merge to dissolve the screen.</p>
+      <p>The result: you no longer play in front of a console. You're inside it.</p>
       <div class="stat-row">
-        <div class="stat"><b>0,4s</b><span>Temps de chargement</span></div>
-        <div class="stat"><b>8K</b><span>Sortie vidéo max</span></div>
-        <div class="stat"><b>1 To</b><span>Stockage NVMe</span></div>
+        <div class="stat"><b>0.4s</b><span>Load time</span></div>
+        <div class="stat"><b>8K</b><span>Max video output</span></div>
+        <div class="stat"><b>1 TB</b><span>NVMe storage</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- GAMES -->
-<section class="block" id="jeux">
+<section class="block" id="games">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Les jeux</span>
-      <h2>Des univers taillés pour la NOVA.</h2>
-      <p>Une sélection de titres fictifs — remplace par tes propres visuels de jaquettes.</p>
+      <span class="eyebrow">The games</span>
+      <h2>Worlds built for NOVA.</h2>
+      <p>A selection of fictional titles — replace with your own cover art.</p>
     </div>
     <div class="games">
-      <div class="game"><small>Exclusivité</small><span>Aether Drift</span></div>
-      <div class="game"><small>Aventure</small><span>Lumen Vale</span></div>
-      <div class="game"><small>Course</small><span>Hyperline X</span></div>
+      <div class="game"><small>Exclusive</small><span>Aether Drift</span></div>
+      <div class="game"><small>Adventure</small><span>Lumen Vale</span></div>
+      <div class="game"><small>Racing</small><span>Hyperline X</span></div>
       <div class="game"><small>Action</small><span>Null Sector</span></div>
     </div>
   </div>
 </section>
 
 <!-- BUY -->
-<section class="block buy" id="acheter">
+<section class="block buy" id="buy">
   <div class="wrap">
-    <h2>La NOVA One vous attend.</h2>
-    <p>Édition standard, 1 To, manette haptique incluse. Prête à brancher, prête à vous surprendre.</p>
-    <div class="price-tag">À partir de <b>549 €</b></div>
-    <a href="produit.html"><button class="btn btn-primary">Voir la fiche produit</button></a>
+    <span class="bf-badge">Black Friday — Exclusive Offer</span>
+    <h2>The NOVA One is waiting for you.</h2>
+    <p>Standard edition, 1 TB, haptic controller included. Ready to plug in, ready to surprise you.</p>
+    <div class="price-line">
+      <span class="old">$600</span>
+      <span class="new">$299</span>
+      <span class="save">−50%</span>
+    </div>
+    <a href="produit.html"><button class="btn btn-primary">Grab the deal — $299</button></a>
   </div>
 </section>
 
@@ -313,42 +315,67 @@
   <div class="wrap">
     <div class="foot-inner">
       <div>
-        <a class="logo" href="index.html"><span class="mark"></span>NOVA</a>
-        <p style="margin-top:14px;max-width:240px">La console qui s'efface pour ne laisser que le jeu.</p>
+        <a class="logo" href="index.html"><img class="logo-img" src="logo.png" alt="NOVA" onload="this.classList.add('on')" onerror="this.remove()"><span class="mark"></span><span class="logo-txt">NOVA</span></a>
+        <p style="margin-top:14px;max-width:240px">The console that fades away to leave only the game.</p>
       </div>
       <div class="foot-cols">
-        <div class="foot-col"><h4>Console</h4><a href="produit.html">NOVA One</a><a href="#tech">Technologie</a><a href="#jeux">Jeux</a></div>
-        <div class="foot-col"><h4>Support</h4><a href="#">Assistance</a><a href="#">Garantie</a><a href="#">Contact</a></div>
-        <div class="foot-col"><h4>Société</h4><a href="#">À propos</a><a href="#">Presse</a><a href="#">Carrières</a></div>
+        <div class="foot-col"><h4>Console</h4><a href="produit.html">NOVA One</a><a href="#tech">Technology</a><a href="#games">Games</a></div>
+        <div class="foot-col"><h4>Support</h4><a href="#">Help</a><a href="#">Warranty</a><a href="#">Contact</a></div>
+        <div class="foot-col"><h4>Company</h4><a href="#">About</a><a href="#">Press</a><a href="#">Careers</a></div>
       </div>
     </div>
-    <p class="disclaimer">NOVA et NOVA One sont une marque et un produit <strong>fictifs</strong>, créés dans le cadre d'un exercice de design. Ce site ne représente aucune entreprise réelle et n'est affilié à aucune marque existante. Tous les noms de jeux sont inventés.</p>
+    <p class="disclaimer">NOVA and NOVA One are a <strong>fictional</strong> brand and product, created as a design exercise. This site represents no real company and is not affiliated with any existing brand. All game names, prices and offers are invented.</p>
   </div>
 </footer>
 
 <script>
-/* ---------- Console NOVA 3D (CSS pur, pilotée au scroll) ---------- */
+/* ---------- NOVA 3D console (pure CSS, scroll-driven) ---------- */
 (function(){
   const el=document.getElementById('console3d');
   if(!el)return;
-  const baseX=-8;         // inclinaison fixe
-  let target=-28,cur=-28; // angle Y suivi
+  const baseX=-8;let target=-28,cur=-28;
   function onScroll(){ target=-28 + window.scrollY*0.12; }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  onScroll();
-  (function loop(){
-    cur+=(target-cur)*0.08;
-    el.style.transform='rotateX('+baseX+'deg) rotateY('+cur.toFixed(2)+'deg)';
-    requestAnimationFrame(loop);
-  })();
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  (function loop(){cur+=(target-cur)*0.08;el.style.transform='rotateX('+baseX+'deg) rotateY('+cur.toFixed(2)+'deg)';requestAnimationFrame(loop);})();
 })();
-</script>
-<script>
-  // reveal au scroll
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in')}})},{threshold:.2});
-  document.querySelectorAll('.feature').forEach((el,i)=>{el.style.transitionDelay=(i%3*.08)+'s';io.observe(el)});
-  // nav opaque au scroll
-  addEventListener('scroll',()=>{document.querySelector('.nav').style.background=scrollY>40?'rgba(6,7,13,.85)':'rgba(6,7,13,.6)'});
+
+/* ---------- Low-stock countdown: 22 -> 5 over 5 minutes ---------- */
+(function(){
+  const nEl=document.getElementById('stockN');
+  const fill=document.getElementById('stockFill');
+  const warn=document.getElementById('stockWarn');
+  if(!nEl)return;
+  const START=22, END=5, MINUTES=5;
+  const steps=START-END;                 // 17 decrements
+  const totalMs=MINUTES*60*1000;
+  let current=START;
+  function render(){
+    nEl.textContent=current;
+    fill.style.width=((current-END)/(START-END)*100)+'%';
+    if(current<=10){warn.textContent='Almost gone!';}
+    if(current<=END){warn.textContent='Last units!';}
+  }
+  render();
+  // décréments répartis sur 5 min, avec un léger aléa pour l'effet "live"
+  let elapsed=0;
+  function scheduleNext(){
+    if(current<=END)return;
+    const base=totalMs/steps;                 // ~17.6 s
+    const jitter=base*(0.5+Math.random());    // 0.5x à 1.5x
+    setTimeout(()=>{
+      current--;
+      render();
+      scheduleNext();
+    }, Math.min(jitter, totalMs-elapsed));
+    elapsed+=base;
+  }
+  scheduleNext();
+})();
+
+/* reveal + nav bg */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.2});
+document.querySelectorAll('.feature').forEach((el,i)=>{el.style.transitionDelay=(i%3*.08)+'s';io.observe(el)});
+addEventListener('scroll',()=>{document.querySelector('.nav').style.background=scrollY>40?'rgba(6,7,13,.85)':'rgba(6,7,13,.6)'});
 </script>
 </body>
 </html>
