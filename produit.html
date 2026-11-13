@@ -144,11 +144,14 @@
   .faq-a{max-height:0;overflow:hidden;transition:max-height .3s;color:var(--muted);font-size:14px}
   .faq-a div{padding:0 0 20px}
 
-  footer{border-top:1px solid var(--line);padding:36px 0 32px}
+  footer{border-top:1px solid rgba(0,0,0,.1);background:#fff;color:#0a0b14;padding:36px 0 32px}
+  footer .logo{color:#0a0b14}
+  footer .tagline{color:#4a5160}
   .foot-cols{display:flex;gap:40px;flex-wrap:wrap;margin-top:20px}
-  .foot-col h4{color:var(--ink);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
-  .foot-col a{display:block;margin-bottom:8px;color:var(--muted);font-size:14px}
-  .disclaimer{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);color:#6a7aa0;font-size:11.5px;line-height:1.6}
+  .foot-col h4{color:#0a0b14;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+  .foot-col a{display:block;margin-bottom:8px;color:#4a5160;font-size:14px}
+  .foot-col a:hover{color:#000}
+  .disclaimer{margin-top:28px;padding-top:20px;border-top:1px solid rgba(0,0,0,.1);color:#8a90a0;font-size:11.5px;line-height:1.6}
 
   /* ---- SECTIONS DE CONTENU (bas de page produit) ---- */
   .feat-row{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:48px 18px;border-top:1px solid var(--line)}
@@ -158,20 +161,20 @@
   .feat-row p{color:var(--muted);font-size:15px;margin-bottom:10px}
 
   .video-sec{padding:48px 18px;border-top:1px solid var(--line)}
-  .video-frame{position:relative;width:100%;max-width:var(--maxw);margin:0 auto;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#07152f;display:flex;align-items:flex-end}
+  .video-frame{position:relative;width:100%;max-width:var(--maxw);margin:0 auto;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#07152f}
   .video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
   .video-frame.has-video video{opacity:1}
   .video-frame .vfallback{position:absolute;inset:0;background:radial-gradient(700px 500px at 60% 30%,rgba(54,182,255,.28),transparent 60%),radial-gradient(500px 400px at 20% 80%,rgba(106,92,255,.25),transparent 60%),#07152f}
   .video-frame.has-video .vfallback,.video-frame.has-video .vph{display:none}
-  .video-frame .vph{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:2;color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.4);border:1px dashed rgba(255,255,255,.25);padding:8px 14px;border-radius:999px;white-space:nowrap}
+  .video-frame .vph{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.4);border:1px dashed rgba(255,255,255,.25);padding:8px 14px;border-radius:999px;white-space:nowrap}
   .video-frame .vph b{color:var(--accent)}
-  .video-frame .vgrad{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(6,16,36,.92),rgba(6,16,36,.3) 45%,transparent 68%)}
-  .video-frame .vcontent{position:relative;z-index:3;width:100%;padding:22px}
-  .video-frame h2{font-size:clamp(22px,6vw,34px);font-weight:900;letter-spacing:-.02em;margin-bottom:8px}
-  .video-frame p{color:#d7e2ff;font-size:14px;max-width:460px}
+  .video-caption{max-width:var(--maxw);margin:18px auto 0}
+  .video-caption h2{font-size:clamp(22px,6vw,34px);font-weight:900;letter-spacing:-.02em;margin:8px 0}
+  .video-caption p{color:var(--muted);font-size:14px;max-width:560px}
 
-  .gallery-strip{display:grid;grid-template-columns:1fr;gap:12px}
-  .gallery-strip .gi{aspect-ratio:16/10;border-radius:12px;border:1px solid var(--line);background:linear-gradient(160deg,#102a4e,#0a1836)}
+  .releases{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .releases .rel{aspect-ratio:3/4;border-radius:12px;border:1px solid var(--line);background:linear-gradient(160deg,#102a4e,#0a1836);overflow:hidden}
+  .releases .ph{font-size:10px}
 
   .inbox{display:grid;grid-template-columns:1fr;gap:22px;align-items:center}
   .inbox .bimg{aspect-ratio:4/3;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(160deg,#102a4e,#0a1836)}
@@ -182,7 +185,7 @@
   @media(min-width:760px){
     .feat-row{grid-template-columns:1fr 1fr;gap:40px;padding:72px 24px}
     .feat-row.reverse .fimg{order:2}
-    .gallery-strip{grid-template-columns:repeat(3,1fr);gap:16px}
+    .releases{grid-template-columns:repeat(4,1fr);gap:16px}
     .inbox{grid-template-columns:1fr 1fr;gap:40px}
     .video-sec{padding:72px 24px}
     .video-frame .vcontent{padding:34px}
@@ -349,12 +352,11 @@
     <video id="vbandVid" autoplay muted loop playsinline preload="auto"><source src="feature.mp4" type="video/mp4"></video>
     <div class="vfallback"></div>
     <div class="vph">Drop <b>feature.mp4</b> here — section video</div>
-    <div class="vgrad"></div>
-    <div class="vcontent">
-      <span class="eyebrow2" style="color:#7fd0ff">In action</span>
-      <h2>See it move.</h2>
-      <p>Drop in a gameplay or product video — it plays inside this frame, which stays aligned with the rest of the page.</p>
-    </div>
+  </div>
+  <div class="video-caption">
+    <span class="eyebrow2" style="color:#7fd0ff">In action</span>
+    <h2>See it move.</h2>
+    <p>Drop in a gameplay or product video — it plays inside this frame, and this text sits just below it.</p>
   </div>
 </section>
 
@@ -371,14 +373,15 @@
   </div>
 </section>
 
-<!-- GALERIE -->
+<!-- LATEST RELEASES -->
 <section class="block">
   <div class="wrap">
-    <div class="section-head"><h2>Gallery</h2><p>Replace with your own screenshots or product shots.</p></div>
-    <div class="gallery-strip">
-      <div class="gi imgslot"><img src="gallery-1.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">gallery-1.jpg</span></div>
-      <div class="gi imgslot"><img src="gallery-2.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">gallery-2.jpg</span></div>
-      <div class="gi imgslot"><img src="gallery-3.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">gallery-3.jpg</span></div>
+    <div class="section-head"><h2>Latest releases</h2><p>The newest games on NOVA.</p></div>
+    <div class="releases">
+      <div class="rel imgslot"><img src="game-1.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">game-1.jpg</span></div>
+      <div class="rel imgslot"><img src="game-2.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">game-2.jpg</span></div>
+      <div class="rel imgslot"><img src="game-3.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">game-3.jpg</span></div>
+      <div class="rel imgslot"><img src="game-4.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">game-4.jpg</span></div>
     </div>
   </div>
 </section>
@@ -445,7 +448,7 @@
 <footer>
   <div class="wrap">
     <a class="logo" href="index.html"><img class="logo-img" src="logo.png" alt="NOVA" onload="this.classList.add('on')" onerror="this.remove()"><span class="mark"></span><span class="logo-txt">NOVA</span></a>
-    <p style="margin-top:12px;max-width:260px;color:var(--muted);font-size:14px">The console that fades away to leave only the game.</p>
+    <p class="tagline" style="margin-top:12px;max-width:260px;font-size:14px">The console that fades away to leave only the game.</p>
     <div class="foot-cols">
       <div class="foot-col"><h4>Console</h4><a href="produit.html">NOVA One</a><a href="index.html#tech">Technology</a></div>
       <div class="foot-col"><h4>Support</h4><a href="#">Help</a><a href="#">Warranty</a></div>
@@ -482,15 +485,19 @@
   (function(){
     const nEl=document.getElementById('stockN'),fill=document.getElementById('stockFill'),warn=document.getElementById('stockWarn');
     if(!nEl)return;
-    const START=22,END=5,MIN=5,steps=START-END,totalMs=MIN*60*1000;
-    let current=START,elapsed=0;
+    const START=22,END=5;
+    let current=START;
     function render(){nEl.textContent=current;fill.style.width=((current-END)/(START-END)*100)+'%';if(current<=10)warn.textContent='Almost gone!';if(current<=END)warn.textContent='Last units!';}
+    // délai avant la prochaine baisse, selon la valeur actuelle
+    function delayBeforeDrop(from){
+      if(from>17) return 4500+Math.random()*2500;   // 22 -> 17 : rapide (~5-7 s), ~30 s au total
+      if(from===17) return 13000;                   // palier calme ~13 s
+      return 15000+Math.random()*12000;             // 17 -> 5 : lent (~15-27 s)
+    }
     render();
     (function next(){
       if(current<=END)return;
-      const base=totalMs/steps,jitter=base*(0.5+Math.random());
-      setTimeout(()=>{current--;render();next();},Math.min(jitter,totalMs-elapsed));
-      elapsed+=base;
+      setTimeout(()=>{current--;render();next();}, delayBeforeDrop(current));
     })();
   })();
   // section vidéo : fallback tant qu'aucune vidéo ne charge
