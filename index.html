@@ -36,13 +36,16 @@
   .bf-bar b{font-weight:800}
 
   /* NAV */
-  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,7,13,.72);border-bottom:1px solid var(--line)}
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(255,255,255,.94);border-bottom:1px solid rgba(0,0,0,.08)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px}
   .logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.16em;font-size:17px}
+  .nav .logo{color:#0a0b14}
   .logo .mark{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--accent));position:relative}
-  .logo .mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--bg)}
+  .logo .mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:#fff}
   nav.menu{display:none}
-  .nav-cta{padding:9px 16px;border-radius:999px;font-size:13px;font-weight:700;background:var(--red);color:#fff}
+  .nav .menu a{color:#2a2f3a}
+  .nav .menu a:hover{color:#000}
+  .nav-cta{padding:9px 16px;border-radius:999px;font-size:13px;font-weight:800;background:var(--red);color:#fff;border:0;cursor:pointer}
 
   /* HERO with background video */
   .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;background:#000}
@@ -149,7 +152,7 @@
       <a href="#games">Games</a>
       <a href="#accessories">Accessories</a>
     </nav>
-    <a class="nav-cta" href="produit.html">Buy NOVA One</a>
+    <a class="nav-cta" href="produit.html">Buy now</a>
   </div>
 </header>
 

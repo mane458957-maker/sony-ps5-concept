@@ -22,6 +22,27 @@
   img{max-width:100%;display:block}
   .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 18px}
 
+  /* ---- fond bleu animé + formes géométriques ---- */
+  .bg-fx{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .bg-fx::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(900px 650px at 72% 12%,rgba(54,182,255,.20),transparent 60%),
+      radial-gradient(700px 550px at 18% 88%,rgba(106,92,255,.18),transparent 60%);
+    animation:bgpulse 16s ease-in-out infinite}
+  @keyframes bgpulse{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+  .shape{position:absolute;opacity:.16;color:#4fc6ff;animation:floatY 18s ease-in-out infinite}
+  .shape.ring{border:2px solid currentColor;border-radius:50%}
+  .shape.dot{background:currentColor;border-radius:50%}
+  .shape.sq{border:2px solid currentColor;border-radius:3px}
+  .shape.dia{border:2px solid currentColor;border-radius:3px}
+  .shape.plus{background:
+      linear-gradient(currentColor,currentColor) center/100% 2px no-repeat,
+      linear-gradient(currentColor,currentColor) center/2px 100% no-repeat}
+  @keyframes floatY{
+    0%{transform:translateY(0) translateX(0) rotate(0)}
+    50%{transform:translateY(-34px) translateX(10px) rotate(25deg)}
+    100%{transform:translateY(0) translateX(0) rotate(0)}
+  }
+
   .logo-img{display:none;height:30px;width:auto}
   .logo-img.on{display:block}
   .logo-img.on ~ .mark,.logo-img.on ~ .logo-txt{display:none}
@@ -35,13 +56,16 @@
   .bf-bar{background:var(--red);color:#fff;text-align:center;padding:10px 16px;font-size:12.5px;letter-spacing:.06em;font-weight:700}
   .bf-bar b{font-weight:800}
 
-  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,16,36,.8);border-bottom:1px solid var(--line)}
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(255,255,255,.94);border-bottom:1px solid rgba(0,0,0,.08)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px}
   .logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.16em;font-size:17px}
+  .nav .logo{color:#0a0b14}
   .logo .mark{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--accent));position:relative}
-  .logo .mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--bg)}
+  .logo .mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:#fff}
   nav.menu{display:none}
-  .nav-cta{padding:9px 16px;border-radius:999px;font-size:13px;font-weight:700;background:var(--red);color:#fff;cursor:pointer;border:0}
+  .nav .menu a{color:#2a2f3a}
+  .nav .menu a:hover{color:#000}
+  .nav-cta{padding:9px 16px;border-radius:999px;font-size:13px;font-weight:800;background:var(--red);color:#fff;cursor:pointer;border:0}
 
   .crumb{padding:18px 0 0;color:var(--muted);font-size:13px}
   .crumb a:hover{color:var(--accent)}
@@ -62,6 +86,17 @@
   .price-line .new{font-size:36px;font-weight:900;color:#fff}
   .price-line .save{background:var(--red);color:#fff;font-weight:800;font-size:12px;padding:5px 11px;border-radius:999px}
   .tax{color:var(--muted);font-size:13px;margin-bottom:18px}
+
+  /* stock dynamique */
+  .stock-box{margin:4px 0 2px;background:var(--panel);border:1px solid rgba(225,29,42,.35);border-radius:12px;padding:14px 16px}
+  .stock-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:9px}
+  .stock-top .lbl{color:var(--muted);letter-spacing:.03em}
+  .stock-top .cnt{color:var(--red-2);font-weight:800}
+  .stock-top .cnt b{font-size:17px}
+  .stock-bar{height:7px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden}
+  .stock-fill{height:100%;width:100%;border-radius:999px;background:linear-gradient(90deg,var(--red),#ff6b3b);transition:width .6s ease}
+  .stock-note{margin-top:8px;font-size:12px;color:var(--muted)}
+  .stock-note b{color:var(--red-2)}
 
   .opt-label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 10px}
   .editions{display:flex;flex-direction:column;gap:10px}
@@ -184,6 +219,24 @@
 </head>
 <body>
 
+<!-- fond animé -->
+<div class="bg-fx" aria-hidden="true">
+  <span class="shape ring" style="left:8%;top:14%;width:70px;height:70px;animation-duration:19s"></span>
+  <span class="shape dot"  style="left:22%;top:32%;width:12px;height:12px;animation-duration:14s;animation-delay:-3s"></span>
+  <span class="shape sq"   style="left:78%;top:10%;width:48px;height:48px;animation-duration:22s;animation-delay:-5s"></span>
+  <span class="shape plus" style="left:88%;top:40%;width:34px;height:34px;animation-duration:17s"></span>
+  <span class="shape ring" style="left:64%;top:58%;width:44px;height:44px;animation-duration:21s;animation-delay:-8s"></span>
+  <span class="shape dot"  style="left:12%;top:66%;width:9px;height:9px;animation-duration:12s;animation-delay:-2s"></span>
+  <span class="shape sq"   style="left:34%;top:78%;width:30px;height:30px;animation-duration:24s;animation-delay:-6s"></span>
+  <span class="shape plus" style="left:50%;top:22%;width:26px;height:26px;animation-duration:16s;animation-delay:-4s"></span>
+  <span class="shape ring" style="left:90%;top:76%;width:58px;height:58px;animation-duration:23s;animation-delay:-10s"></span>
+  <span class="shape dot"  style="left:72%;top:88%;width:14px;height:14px;animation-duration:13s"></span>
+  <span class="shape sq"   style="left:6%;top:44%;width:22px;height:22px;animation-duration:20s;animation-delay:-7s"></span>
+  <span class="shape plus" style="left:40%;top:52%;width:30px;height:30px;animation-duration:18s;animation-delay:-9s"></span>
+  <span class="shape dot"  style="left:56%;top:8%;width:10px;height:10px;animation-duration:15s;animation-delay:-1s"></span>
+  <span class="shape ring" style="left:30%;top:6%;width:36px;height:36px;animation-duration:20s;animation-delay:-6s"></span>
+</div>
+
 <div class="bf-bar">BLACK FRIDAY — EXCLUSIVE OFFER · <b>NOVA One at $299</b> instead of $600</div>
 
 <header class="nav">
@@ -194,7 +247,7 @@
       <a href="index.html#games">Games</a>
       <a href="index.html#accessories">Accessories</a>
     </nav>
-    <button class="nav-cta" onclick="openCart()">Cart</button>
+    <button class="nav-cta" onclick="openCart()">Buy now</button>
   </div>
 </header>
 
@@ -227,6 +280,15 @@
       <span class="save">−50%</span>
     </div>
     <div class="tax">Tax included · Free shipping</div>
+
+    <div class="stock-box">
+      <div class="stock-top">
+        <span class="lbl">Low stock — selling fast</span>
+        <span class="cnt"><b id="stockN">22</b> left</span>
+      </div>
+      <div class="stock-bar"><div class="stock-fill" id="stockFill"></div></div>
+      <div class="stock-note">Black Friday price ends when stock hits zero. <b id="stockWarn">Hurry!</b></div>
+    </div>
 
     <div class="opt-label">Editions</div>
     <div class="editions">
@@ -396,6 +458,21 @@
 </aside>
 
 <script>
+  // stock dynamique : 22 -> 5 sur 5 minutes
+  (function(){
+    const nEl=document.getElementById('stockN'),fill=document.getElementById('stockFill'),warn=document.getElementById('stockWarn');
+    if(!nEl)return;
+    const START=22,END=5,MIN=5,steps=START-END,totalMs=MIN*60*1000;
+    let current=START,elapsed=0;
+    function render(){nEl.textContent=current;fill.style.width=((current-END)/(START-END)*100)+'%';if(current<=10)warn.textContent='Almost gone!';if(current<=END)warn.textContent='Last units!';}
+    render();
+    (function next(){
+      if(current<=END)return;
+      const base=totalMs/steps,jitter=base*(0.5+Math.random());
+      setTimeout(()=>{current--;render();next();},Math.min(jitter,totalMs-elapsed));
+      elapsed+=base;
+    })();
+  })();
   // section vidéo : fallback tant qu'aucune vidéo ne charge
   (function(){
     const band=document.getElementById('vband'),v=document.getElementById('vbandVid');
