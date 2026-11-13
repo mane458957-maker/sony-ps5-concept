@@ -601,7 +601,7 @@
   function openCart(){document.getElementById('cart').classList.add('open');document.getElementById('cartOverlay').classList.add('open');document.body.style.overflow='hidden';}
   function closeCart(){document.getElementById('cart').classList.remove('open');document.getElementById('cartOverlay').classList.remove('open');document.body.style.overflow='';}
   // checkout -> Stripe (mets ton lien ci-dessous)
-  var STRIPE_LINK = ""; // ← colle ici ton lien de paiement Stripe (ex: https://buy.stripe.com/xxxx)
+  var STRIPE_LINK = "https://buy.stripe.com/4gM00jgow9lL1rpg063sI00"; // lien de paiement Stripe
   function goCheckout(){
     if(STRIPE_LINK){ window.location.href = STRIPE_LINK; return false; }
     alert("Lien Stripe à connecter : renseigne STRIPE_LINK dans le code. (Prix unique quelle que soit la quantité.)");
