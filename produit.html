@@ -67,10 +67,10 @@
   .nav .menu a:hover{color:#000}
   .nav-cta{padding:9px 16px;border-radius:999px;font-size:13px;font-weight:800;background:var(--red);color:#fff;cursor:pointer;border:0}
 
-  .crumb{padding:18px 0 0;color:var(--muted);font-size:13px}
+  .crumb{padding:18px 18px 0;color:var(--muted);font-size:13px}
   .crumb a:hover{color:var(--accent)}
 
-  .product{display:grid;grid-template-columns:1fr;gap:26px;padding:20px 0 60px;align-items:start}
+  .product{display:grid;grid-template-columns:1fr;gap:24px;padding:18px 18px 56px;align-items:start}
   .gallery-main{position:relative;aspect-ratio:1/1;border-radius:var(--radius);background:radial-gradient(500px 400px at 50% 30%,rgba(54,182,255,.25),transparent 60%),linear-gradient(160deg,#102a4e,#0a1836);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
   .img-badge{position:absolute;top:14px;left:14px;z-index:3;background:var(--red);color:#fff;font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
   .thumbs{display:flex;gap:10px;margin-top:12px}
@@ -78,12 +78,12 @@
   .thumb.active{border-color:var(--accent)}
 
   .badge-red{display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#fff;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border-radius:999px;margin-bottom:14px}
-  .info h1{font-size:clamp(28px,8vw,40px);font-weight:900;letter-spacing:-.02em;line-height:1.05;margin-bottom:10px}
+  .info h1{font-size:clamp(23px,6.2vw,34px);font-weight:900;letter-spacing:-.02em;line-height:1.08;margin-bottom:10px}
   .rating{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;margin-bottom:18px}
   .stars{color:var(--accent);letter-spacing:2px}
   .price-line{display:flex;align-items:baseline;gap:12px;margin:6px 0 6px;flex-wrap:wrap}
   .price-line .old{color:var(--muted);text-decoration:line-through;font-size:20px}
-  .price-line .new{font-size:36px;font-weight:900;color:#fff}
+  .price-line .new{font-size:30px;font-weight:900;color:#fff}
   .price-line .save{background:var(--red);color:#fff;font-weight:800;font-size:12px;padding:5px 11px;border-radius:999px}
   .tax{color:var(--muted);font-size:13px;margin-bottom:18px}
 
@@ -100,7 +100,10 @@
 
   .opt-label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 10px}
   .editions{display:flex;flex-direction:column;gap:10px}
-  .edition{border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .edition{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;align-items:center;gap:12px}
+  .ed-thumb{width:54px;height:54px;flex-shrink:0;border-radius:10px;border:1px solid var(--line);background:linear-gradient(160deg,#102a4e,#0a1836)}
+  .ed-thumb .ph{font-size:9px;letter-spacing:.08em}
+  .ed-info{flex:1;min-width:0}
   .edition.sold{opacity:.5;filter:grayscale(.6);position:relative}
   .edition.sold .oos{background:#334;color:#cfd6e6;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px;white-space:nowrap}
   .edition.avail{border-color:var(--accent);background:rgba(54,182,255,.08)}
@@ -146,7 +149,7 @@
   .disclaimer{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);color:#6a7aa0;font-size:11.5px;line-height:1.6}
 
   /* ---- SECTIONS DE CONTENU (bas de page produit) ---- */
-  .feat-row{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:52px 0;border-top:1px solid var(--line)}
+  .feat-row{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:48px 18px;border-top:1px solid var(--line)}
   .feat-row .fimg{aspect-ratio:4/3;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(160deg,#102a4e,#0a1836)}
   .feat-row .eyebrow2{display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
   .feat-row h2{font-size:clamp(24px,7vw,34px);font-weight:900;letter-spacing:-.02em;line-height:1.1;margin-bottom:12px}
@@ -174,7 +177,7 @@
   .inbox li::before{content:"✦";color:var(--accent)}
 
   @media(min-width:760px){
-    .feat-row{grid-template-columns:1fr 1fr;gap:40px;padding:72px 0}
+    .feat-row{grid-template-columns:1fr 1fr;gap:40px;padding:72px 24px}
     .feat-row.reverse .fimg{order:2}
     .gallery-strip{grid-template-columns:repeat(3,1fr);gap:16px}
     .inbox{grid-template-columns:1fr 1fr;gap:40px}
@@ -206,7 +209,7 @@
   @media(min-width:760px){
     .wrap{padding:0 24px}
     nav.menu{display:flex;gap:26px;font-size:14px;color:var(--muted)}
-    .product{grid-template-columns:1.05fr .95fr;gap:44px;padding:24px 0 80px}
+    .product{grid-template-columns:1.05fr .95fr;gap:44px;padding:24px 24px 80px}
     .gallery{position:sticky;top:84px}
     .buy-row{flex-direction:row}
     .specs{grid-template-columns:repeat(2,1fr);gap:0 50px}
@@ -292,10 +295,21 @@
 
     <div class="opt-label">Editions</div>
     <div class="editions">
-      <div class="edition sold"><div><b>Digital 1 TB</b><span class="sub">100% digital</span></div><span class="oos">Out of stock</span></div>
-      <div class="edition sold"><div><b>Standard 1 TB</b><span class="sub">Disc drive included</span></div><span class="oos">Out of stock</span></div>
-      <div class="edition sold"><div><b>Bundle + 2nd controller</b><span class="sub">Two players</span></div><span class="oos">Out of stock</span></div>
-      <div class="edition avail"><div><b>NOVA One — Black Friday Unit</b><span class="sub">1 TB · controller included</span></div><span class="instock">● In stock</span></div>
+      <div class="edition avail">
+        <div class="ed-thumb imgslot"><img src="edition-digital.png" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">PNG</span></div>
+        <div class="ed-info"><b>Digital 1 TB</b><span class="sub">100% digital</span></div>
+        <span class="instock">● In stock</span>
+      </div>
+      <div class="edition sold">
+        <div class="ed-thumb imgslot"><img src="edition-standard.png" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">PNG</span></div>
+        <div class="ed-info"><b>Standard 1 TB</b><span class="sub">Disc drive included</span></div>
+        <span class="oos">Out of stock</span>
+      </div>
+      <div class="edition sold">
+        <div class="ed-thumb imgslot"><img src="edition-bundle.png" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">PNG</span></div>
+        <div class="ed-info"><b>Bundle + 2nd controller</b><span class="sub">Two players</span></div>
+        <span class="oos">Out of stock</span>
+      </div>
     </div>
 
     <div class="buy-row">
@@ -444,8 +458,8 @@
   </div>
   <div class="cart-body">
     <div class="cart-item">
-      <div class="ci-img"><img src="product-1.jpg" alt="" onerror="this.remove()"></div>
-      <div class="ci-info"><b>NOVA One — 1 TB</b><span>Black Friday Unit · controller included</span></div>
+      <div class="ci-img"><img src="edition-digital.png" alt="" onerror="this.remove()"></div>
+      <div class="ci-info"><b>NOVA One — Digital 1 TB</b><span>Black Friday · instant delivery</span></div>
       <div class="ci-price">$299</div>
     </div>
     <div class="limit-note">⚠ Limited to one purchase per person</div>
