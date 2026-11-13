@@ -59,18 +59,24 @@
   .bf-bar b{font-weight:800}
   /* --- compte à rebours (dégradé violet/rose/orange) --- */
   .gta-cd{background:linear-gradient(90deg,#6a2ff5,#c13aa0,#ff7a18,#ffc23a)}
-  .gc-inner{max-width:1180px;margin:0 auto;padding:9px 18px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
-  .gc-icon{width:30px;height:30px;border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(0,0,0,.18)}
-  .gc-icon img{display:none;width:100%;height:100%;object-fit:contain}
+  .gc-inner{max-width:1180px;margin:0 auto;padding:7px 12px;display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:nowrap}
+  .gc-icon{height:42px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .gc-icon img{display:none;height:42px;width:auto;object-fit:contain}
   .gc-icon img.on{display:block}
   .gc-icon img.on + .gc-ph{display:none}
   .gc-ph{display:flex}
-  .gc-ph svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .gc-text{color:#fff;font-weight:800;font-size:13px;letter-spacing:.03em;text-shadow:0 1px 4px rgba(0,0,0,.3)}
-  .gc-timer{display:flex;gap:8px}
-  .gc-unit{background:rgba(0,0,0,.28);border-radius:8px;padding:4px 9px;text-align:center;min-width:42px}
-  .gc-unit b{display:block;color:#fff;font-size:16px;font-weight:900;line-height:1.1}
-  .gc-unit span{color:rgba(255,255,255,.82);font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+  .gc-ph svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .gc-text{color:#fff;font-weight:800;font-size:12px;letter-spacing:.01em;text-shadow:0 1px 4px rgba(0,0,0,.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .gc-timer{display:flex;gap:6px;align-items:baseline;flex-shrink:0}
+  .gc-u{color:#fff;font-weight:700;font-size:11px;white-space:nowrap}
+  .gc-u b{font-size:16px;font-weight:900}
+  @media(min-width:760px){
+    .gc-inner{gap:16px;padding:9px 18px}
+    .gc-icon,.gc-icon img{height:48px}
+    .gc-ph svg{width:34px;height:34px}
+    .gc-text{font-size:14px}
+    .gc-u{font-size:13px}.gc-u b{font-size:18px}
+  }
 
   header.nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px}
@@ -307,12 +313,12 @@
       <img src="game-logo.png" alt="" onload="this.classList.add('on')" onerror="this.remove()">
       <span class="gc-ph"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="9" rx="4.5"/><line x1="7" y1="11" x2="7" y2="14"/><line x1="5.5" y1="12.5" x2="8.5" y2="12.5"/><circle cx="16" cy="11.5" r=".6"/><circle cx="18" cy="13.5" r=".6"/></svg></span>
     </div>
-    <div class="gc-text">Countdown to the biggest release</div>
+    <div class="gc-text">Launch countdown</div>
     <div class="gc-timer">
-      <div class="gc-unit"><b id="cdD">00</b><span>days</span></div>
-      <div class="gc-unit"><b id="cdH">00</b><span>hrs</span></div>
-      <div class="gc-unit"><b id="cdM">00</b><span>min</span></div>
-      <div class="gc-unit"><b id="cdS">00</b><span>sec</span></div>
+      <span class="gc-u"><b id="cdD">00</b>d</span>
+      <span class="gc-u"><b id="cdH">00</b>h</span>
+      <span class="gc-u"><b id="cdM">00</b>m</span>
+      <span class="gc-u"><b id="cdS">00</b>s</span>
     </div>
   </div>
 </div>
