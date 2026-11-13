@@ -147,14 +147,35 @@
   .faq-a{max-height:0;overflow:hidden;transition:max-height .3s;color:var(--muted);font-size:14px}
   .faq-a div{padding:0 0 20px}
 
-  footer{border-top:1px solid rgba(0,0,0,.1);background:#fff;color:#0a0b14;padding:36px 0 32px}
+  footer{border-top:1px solid rgba(0,0,0,.1);background:#fff;color:#0a0b14;padding:14px 0 32px}
   footer .logo{color:#0a0b14}
-  footer .tagline{color:#4a5160}
-  .foot-cols{display:flex;gap:40px;flex-wrap:wrap;margin-top:20px}
-  .foot-col h4{color:#0a0b14;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
-  .foot-col a{display:block;margin-bottom:8px;color:#4a5160;font-size:14px}
-  .foot-col a:hover{color:#000}
-  .disclaimer{margin-top:28px;padding-top:20px;border-top:1px solid rgba(0,0,0,.1);color:#8a90a0;font-size:11.5px;line-height:1.6}
+  .facc{border-bottom:1px solid rgba(0,0,0,.1)}
+  .facc-h{width:100%;background:none;border:0;display:flex;justify-content:space-between;align-items:center;padding:17px 0;font-size:16px;font-weight:700;color:#0a0b14;cursor:pointer;text-align:left;font-family:inherit}
+  .facc-h.static{cursor:default}
+  .facc-h .pm{font-size:22px;line-height:1;color:#0a0b14;transition:transform .25s}
+  .facc-h.open .pm{transform:rotate(45deg)}
+  .facc-b{display:none;flex-direction:column;gap:12px;padding:2px 0 18px}
+  .facc-b.open{display:flex}
+  .facc-b a{color:#4a5160;font-size:14px}
+  .facc-b a:hover{color:#000}
+  .facc-b .nolink{color:#9aa0ad;font-size:14px}
+  .foot-social{margin-top:24px}
+  .fs-title{font-size:16px;font-weight:700;color:#0a0b14;margin-bottom:14px}
+  .social-row{display:flex;gap:12px}
+  .soc{width:40px;height:40px;border-radius:50%;background:#0a0b14;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;overflow:hidden}
+  .soc img{display:none;width:100%;height:100%;object-fit:cover}
+  .soc img.on{display:block}
+  .soc img.on + span{display:none}
+  .foot-brand{margin-top:28px}
+  .foot-brand .tagline{color:#4a5160;font-size:14px;margin-top:10px;max-width:260px}
+  .disclaimer{margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,.1);color:#8a90a0;font-size:11.5px;line-height:1.6}
+  @media(min-width:760px){
+    .foot-acc{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;border-bottom:1px solid rgba(0,0,0,.1);padding-bottom:12px}
+    .facc{border-bottom:0}
+    .facc-h{cursor:default;padding:0 0 14px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    .facc-h .pm{display:none}
+    .facc-b{display:flex!important;padding:0}
+  }
 
   /* ---- SECTIONS DE CONTENU (bas de page produit) ---- */
   .feat-row{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:48px 18px;border-top:1px solid var(--line)}
@@ -459,12 +480,34 @@
 
 <footer>
   <div class="wrap">
-    <a class="logo" href="index.html"><img class="logo-img" src="logo.png" alt="NOVA" onload="this.classList.add('on')" onerror="this.remove()"><span class="mark"></span><span class="logo-txt">NOVA</span></a>
-    <p class="tagline" style="margin-top:12px;max-width:260px;font-size:14px">The console that fades away to leave only the game.</p>
-    <div class="foot-cols">
-      <div class="foot-col"><h4>Console</h4><a href="produit.html">NOVA One</a><a href="index.html#tech">Technology</a></div>
-      <div class="foot-col"><h4>Support</h4><a href="#">Help</a><a href="#">Warranty</a></div>
-      <div class="foot-col"><h4>Company</h4><a href="#">About</a><a href="#">Press</a></div>
+    <div class="foot-acc">
+      <div class="facc">
+        <button class="facc-h">Info <span class="pm">+</span></button>
+        <div class="facc-b"><a href="about.html">About us</a><span class="nolink">Careers</span></div>
+      </div>
+      <div class="facc">
+        <button class="facc-h">Products <span class="pm">+</span></button>
+        <div class="facc-b"><span class="nolink">Console</span><span class="nolink">Games</span><span class="nolink">Accessories</span></div>
+      </div>
+      <div class="facc"><div class="facc-h static">Durability</div></div>
+      <div class="facc"><div class="facc-h static">Assistance</div></div>
+      <div class="facc">
+        <button class="facc-h">Resources <span class="pm">+</span></button>
+        <div class="facc-b"><a href="terms.html">Terms of Sale</a><a href="legal.html">Legal notice</a><a href="privacy.html">Privacy policy</a></div>
+      </div>
+    </div>
+    <div class="foot-social">
+      <div class="fs-title">Follow us</div>
+      <div class="social-row">
+        <a class="soc" href="#" title="Facebook" aria-label="Facebook"><img src="social-1.png" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span>F</span></a>
+        <a class="soc" href="#" title="X" aria-label="X"><img src="social-2.png" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span>X</span></a>
+        <a class="soc" href="#" title="Instagram" aria-label="Instagram"><img src="social-3.png" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span>I</span></a>
+        <a class="soc" href="#" title="YouTube" aria-label="YouTube"><img src="social-4.png" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span>Y</span></a>
+      </div>
+    </div>
+    <div class="foot-brand">
+      <a class="logo" href="index.html"><img class="logo-img" src="logo.png" alt="NOVA" onload="this.classList.add('on')" onerror="this.remove()"><span class="mark"></span><span class="logo-txt">NOVA</span></a>
+      <p class="tagline">The console that fades away to leave only the game.</p>
     </div>
     <p class="disclaimer">NOVA and NOVA One are a <strong>fictional</strong> brand and product, created as a design exercise. No affiliation with any existing brand. Prices, reviews, offers and specifications are invented.</p>
   </div>
@@ -538,6 +581,10 @@
   document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{
     const a=q.nextElementSibling;q.classList.toggle('open');
     a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px';
+  }));
+  // footer accordéon
+  document.querySelectorAll('.facc-h:not(.static)').forEach(h=>h.addEventListener('click',()=>{
+    h.classList.toggle('open');const b=h.nextElementSibling;if(b)b.classList.toggle('open');
   }));
 </script>
 </body>
