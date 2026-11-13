@@ -58,7 +58,7 @@
   .bf-bar{background:var(--grad);color:#fff;text-align:center;padding:10px 16px;font-size:12.5px;letter-spacing:.06em;font-weight:700}
   .bf-bar b{font-weight:800}
 
-  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(255,255,255,.94);border-bottom:1px solid rgba(0,0,0,.08)}
+  header.nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px}
   .logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.16em;font-size:17px}
   .nav .logo{color:#0a0b14}
@@ -182,11 +182,20 @@
   .inbox li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;display:flex;gap:10px}
   .inbox li::before{content:"✦";color:var(--accent)}
 
+  /* accessoires */
+  .acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .acc{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .acc .acc-img{aspect-ratio:4/3}
+  .acc .acc-txt{padding:14px 16px}
+  .acc h3{font-size:16px;margin-bottom:4px}
+  .acc p{color:var(--muted);font-size:13px}
+
   @media(min-width:760px){
     .feat-row{grid-template-columns:1fr 1fr;gap:40px;padding:72px 24px}
     .feat-row.reverse .fimg{order:2}
     .releases{grid-template-columns:repeat(4,1fr);gap:16px}
     .inbox{grid-template-columns:1fr 1fr;gap:40px}
+    .acc-grid{grid-template-columns:repeat(4,1fr);gap:18px}
     .video-sec{padding:72px 24px}
     .video-frame .vcontent{padding:34px}
   }
@@ -386,22 +395,28 @@
   </div>
 </section>
 
-<!-- IN THE BOX -->
-<section class="wrap feat-row inbox">
-  <div class="bimg imgslot">
-    <img src="box.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()">
-    <span class="ph">Drop <b>box.jpg</b> here</span>
-  </div>
-  <div>
-    <span class="eyebrow2">In the box</span>
-    <h2>Everything to start.</h2>
-    <ul>
-      <li>NOVA One console — 1 TB</li>
-      <li>Haptic controller</li>
-      <li>HDMI 2.1 cable</li>
-      <li>Power cable + stand</li>
-      <li>Quick start guide</li>
-    </ul>
+<!-- ACCESSORIES -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-head"><h2>Accessories</h2><p>Complete your setup.</p></div>
+    <div class="acc-grid">
+      <div class="acc">
+        <div class="acc-img imgslot"><img src="acc-1.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">acc-1.jpg</span></div>
+        <div class="acc-txt"><h3>Controller</h3><p>Haptic feedback, adaptive triggers.</p></div>
+      </div>
+      <div class="acc">
+        <div class="acc-img imgslot"><img src="acc-2.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">acc-2.jpg</span></div>
+        <div class="acc-txt"><h3>Audio</h3><p>Wireless 3D headset.</p></div>
+      </div>
+      <div class="acc">
+        <div class="acc-img imgslot"><img src="acc-3.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">acc-3.jpg</span></div>
+        <div class="acc-txt"><h3>Support</h3><p>Charging dock &amp; stand.</p></div>
+      </div>
+      <div class="acc">
+        <div class="acc-img imgslot"><img src="acc-4.jpg" alt="" onload="this.classList.add('on')" onerror="this.remove()"><span class="ph">acc-4.jpg</span></div>
+        <div class="acc-txt"><h3>Special accessory</h3><p>Limited edition add-on.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
