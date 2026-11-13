@@ -10,6 +10,8 @@
     --bg:#06070d;--bg-2:#0c0e18;--panel:#11131f;--ink:#f2f4ff;--muted:#9aa0bd;
     --line:rgba(255,255,255,.08);--accent:#22e0ff;--accent-2:#6a5cff;
     --red:#e11d2a;--red-2:#ff3b47;--red-dark:#b3141f;
+    --grad:linear-gradient(120deg,#2f6bff 0%,#7a4dff 55%,#9b4dff 100%);
+    --violet:#8b6cff;--violet-2:#a98bff;--glow-v:0 10px 30px rgba(123,77,255,.4);
     --glow:0 0 40px rgba(34,224,255,.35);--radius:16px;--maxw:1180px;
     --font:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
   }
@@ -32,7 +34,7 @@
   .ph b{color:var(--accent);letter-spacing:.03em}
 
   /* announcement bar (RED) */
-  .bf-bar{background:var(--red);color:#fff;text-align:center;padding:10px 16px;font-size:12.5px;letter-spacing:.06em;font-weight:700}
+  .bf-bar{background:var(--grad);color:#fff;text-align:center;padding:10px 16px;font-size:12.5px;letter-spacing:.06em;font-weight:700}
   .bf-bar b{font-weight:800}
 
   /* NAV */
@@ -45,7 +47,7 @@
   nav.menu{display:none}
   .nav .menu a{color:#2a2f3a}
   .nav .menu a:hover{color:#000}
-  .nav-cta{padding:9px 16px;border-radius:999px;font-size:13px;font-weight:800;background:var(--red);color:#fff;border:0;cursor:pointer}
+  .nav-cta{padding:9px 16px;border-radius:999px;font-size:13px;font-weight:800;background:var(--grad);color:#fff;border:0;cursor:pointer}
 
   /* HERO with background video */
   .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;background:#000}
@@ -60,13 +62,13 @@
   /* dégradé bas pour lisibilité du texte */
   .hero-grad{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(6,7,13,.96) 2%,rgba(6,7,13,.75) 22%,rgba(6,7,13,.15) 48%,transparent 70%)}
   .hero-content{position:relative;z-index:3;width:100%;padding-bottom:44px;padding-top:40vh}
-  .badge-red{display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#fff;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border-radius:999px;margin-bottom:16px}
+  .badge-red{display:inline-flex;align-items:center;gap:7px;background:var(--grad);color:#fff;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border-radius:999px;margin-bottom:16px}
   h1.hero-title{font-size:clamp(40px,12vw,64px);line-height:.98;font-weight:900;letter-spacing:-.02em}
   h1.hero-title span{color:var(--accent)}
   .hero p.lead{color:#d7dbf0;font-size:16px;margin:16px 0 24px;max-width:460px}
   .btn{display:inline-block;padding:15px 26px;border-radius:999px;font-weight:800;font-size:15px;cursor:pointer;border:0;text-align:center}
-  .btn-red{background:var(--red);color:#fff;box-shadow:0 10px 30px rgba(225,29,42,.35)}
-  .btn-red:active{background:var(--red-dark)}
+  .btn-red{background:var(--grad);color:#fff;box-shadow:var(--glow-v)}
+  .btn-red:active{filter:brightness(.92)}
   .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff}
   .hero-cta{display:flex;flex-direction:column;gap:12px;max-width:340px}
 
@@ -103,7 +105,7 @@
   .games{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .game{aspect-ratio:3/4;border-radius:12px;background:linear-gradient(160deg,#1a1d2e,#0a0b14);border:1px solid var(--line);position:relative;overflow:hidden}
   .game .ph{font-size:10px}
-  .game .tag{position:absolute;top:10px;left:10px;z-index:2;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--red);padding:3px 8px;border-radius:999px}
+  .game .tag{position:absolute;top:10px;left:10px;z-index:2;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--grad);padding:3px 8px;border-radius:999px}
   .game .name{position:absolute;bottom:11px;left:11px;z-index:2;font-weight:700;font-size:13px;text-shadow:0 2px 8px #000}
 
   .accessories{display:grid;grid-template-columns:1fr;gap:16px}
