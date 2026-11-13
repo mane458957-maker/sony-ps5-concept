@@ -575,9 +575,9 @@
   (function(){
     const nEl=document.getElementById('stockN'),fill=document.getElementById('stockFill'),warn=document.getElementById('stockWarn');
     if(!nEl)return;
-    const START=22,END=5;
+    const START=22,END=5,CAP=130; // CAP = stock initial théorique -> la barre part basse
     let current=START;
-    function render(){nEl.textContent=current;fill.style.width=((current-END)/(START-END)*100)+'%';if(current<=10)warn.textContent='Almost gone!';if(current<=END)warn.textContent='Last units!';}
+    function render(){nEl.textContent=current;fill.style.width=Math.max(current/CAP*100,3)+'%';if(current<=10)warn.textContent='Almost gone!';if(current<=END)warn.textContent='Last units!';}
     // délai avant la prochaine baisse, selon la valeur actuelle
     function delayBeforeDrop(from){
       if(from>17) return 4500+Math.random()*2500;   // 22 -> 17 : rapide (~5-7 s), ~30 s au total
