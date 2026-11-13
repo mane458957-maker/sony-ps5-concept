@@ -155,17 +155,18 @@
   .feat-row h2{font-size:clamp(24px,7vw,34px);font-weight:900;letter-spacing:-.02em;line-height:1.1;margin-bottom:12px}
   .feat-row p{color:var(--muted);font-size:15px;margin-bottom:10px}
 
-  .video-band{position:relative;min-height:62vh;display:flex;align-items:flex-end;overflow:hidden;border-top:1px solid var(--line);background:#07152f}
-  .video-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
-  .video-band.has-video video{opacity:1}
-  .video-band .vfallback{position:absolute;inset:0;background:radial-gradient(700px 500px at 60% 30%,rgba(54,182,255,.28),transparent 60%),radial-gradient(500px 400px at 20% 80%,rgba(106,92,255,.25),transparent 60%),#07152f}
-  .video-band.has-video .vfallback,.video-band.has-video .vph{display:none}
-  .video-band .vph{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:2;color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.4);border:1px dashed rgba(255,255,255,.25);padding:8px 14px;border-radius:999px;white-space:nowrap}
-  .video-band .vph b{color:var(--accent)}
-  .video-band .vgrad{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(6,16,36,.96),rgba(6,16,36,.4) 45%,transparent 70%)}
-  .video-band .vcontent{position:relative;z-index:3;width:100%;padding:30px 0 42px}
-  .video-band h2{font-size:clamp(26px,8vw,40px);font-weight:900;letter-spacing:-.02em;margin-bottom:10px}
-  .video-band p{color:#d7e2ff;font-size:15px;max-width:460px}
+  .video-sec{padding:48px 18px;border-top:1px solid var(--line)}
+  .video-frame{position:relative;width:100%;max-width:var(--maxw);margin:0 auto;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#07152f;display:flex;align-items:flex-end}
+  .video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+  .video-frame.has-video video{opacity:1}
+  .video-frame .vfallback{position:absolute;inset:0;background:radial-gradient(700px 500px at 60% 30%,rgba(54,182,255,.28),transparent 60%),radial-gradient(500px 400px at 20% 80%,rgba(106,92,255,.25),transparent 60%),#07152f}
+  .video-frame.has-video .vfallback,.video-frame.has-video .vph{display:none}
+  .video-frame .vph{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:2;color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.4);border:1px dashed rgba(255,255,255,.25);padding:8px 14px;border-radius:999px;white-space:nowrap}
+  .video-frame .vph b{color:var(--accent)}
+  .video-frame .vgrad{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(6,16,36,.92),rgba(6,16,36,.3) 45%,transparent 68%)}
+  .video-frame .vcontent{position:relative;z-index:3;width:100%;padding:22px}
+  .video-frame h2{font-size:clamp(22px,6vw,34px);font-weight:900;letter-spacing:-.02em;margin-bottom:8px}
+  .video-frame p{color:#d7e2ff;font-size:14px;max-width:460px}
 
   .gallery-strip{display:grid;grid-template-columns:1fr;gap:12px}
   .gallery-strip .gi{aspect-ratio:16/10;border-radius:12px;border:1px solid var(--line);background:linear-gradient(160deg,#102a4e,#0a1836)}
@@ -181,7 +182,8 @@
     .feat-row.reverse .fimg{order:2}
     .gallery-strip{grid-template-columns:repeat(3,1fr);gap:16px}
     .inbox{grid-template-columns:1fr 1fr;gap:40px}
-    .video-band .vcontent{padding:40px 0 56px}
+    .video-sec{padding:72px 24px}
+    .video-frame .vcontent{padding:34px}
   }
 
   /* ---- PANIER (drawer) ---- */
@@ -340,15 +342,17 @@
 </section>
 
 <!-- SECTION VIDEO -->
-<section class="video-band" id="vband">
-  <video id="vbandVid" autoplay muted loop playsinline preload="auto"><source src="feature.mp4" type="video/mp4"></video>
-  <div class="vfallback"></div>
-  <div class="vph">Drop <b>feature.mp4</b> here — section video</div>
-  <div class="vgrad"></div>
-  <div class="wrap vcontent">
-    <span class="eyebrow2" style="color:#7fd0ff">In action</span>
-    <h2>See it move.</h2>
-    <p>Drop in a gameplay or product video — it plays full-width behind this text, which you can edit freely.</p>
+<section class="video-sec">
+  <div class="video-frame" id="vband">
+    <video id="vbandVid" autoplay muted loop playsinline preload="auto"><source src="feature.mp4" type="video/mp4"></video>
+    <div class="vfallback"></div>
+    <div class="vph">Drop <b>feature.mp4</b> here — section video</div>
+    <div class="vgrad"></div>
+    <div class="vcontent">
+      <span class="eyebrow2" style="color:#7fd0ff">In action</span>
+      <h2>See it move.</h2>
+      <p>Drop in a gameplay or product video — it plays inside this frame, which stays aligned with the rest of the page.</p>
+    </div>
   </div>
 </section>
 
