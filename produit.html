@@ -604,11 +604,24 @@
   function closeCart(){document.getElementById('cart').classList.remove('open');document.getElementById('cartOverlay').classList.remove('open');document.body.style.overflow='';}
   // checkout -> Stripe (mets ton lien ci-dessous)
   var STRIPE_LINK = "https://buy.stripe.com/4gM00jgow9lL1rpg063sI00"; // lien de paiement Stripe
-  function goCheckout(){
-    if(STRIPE_LINK){ window.location.href = STRIPE_LINK; return false; }
-    alert("Lien Stripe à connecter : renseigne STRIPE_LINK dans le code. (Prix unique quelle que soit la quantité.)");
+ function goCheckout(){
+  if(STRIPE_LINK){
+    // Snapchat : le client commence le paiement
+    if(typeof snaptr === 'function'){
+      snaptr('track', 'START_CHECKOUT');
+    }
+
+    // Redirection vers Stripe
+    setTimeout(function(){
+      window.location.href = STRIPE_LINK;
+    }, 300);
+
     return false;
   }
+
+  alert("Lien Stripe à connecter : renseigne STRIPE_LINK dans le code.");
+  return false;
+}
   // editions grisées : non cliquables (déjà visuellement sold out)
   // thumbs
   document.querySelectorAll('.thumb').forEach(t=>t.addEventListener('click',()=>{
