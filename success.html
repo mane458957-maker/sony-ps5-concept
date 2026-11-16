@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Payment status | PS5 Store</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root{color-scheme:dark;--bg:#06070d;--panel:#111827;--ink:#f2f4ff;--muted:#9aa0bd;--grad:linear-gradient(120deg,#2f6bff 0%,#7a4dff 55%,#9b4dff 100%);--line:rgba(255,255,255,.1)}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px;background:radial-gradient(900px 600px at 50% 15%,rgba(106,92,255,.23),transparent 60%),#06070d;color:var(--ink);font-family:Segoe UI,system-ui,-apple-system,Arial,sans-serif;display:grid;place-items:center}
+    main{width:min(100%,560px);padding:42px 30px;text-align:center;background:rgba(17,24,39,.92);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 80px rgba(0,0,0,.35)}
+    .mark{width:66px;height:66px;margin:0 auto 22px;border-radius:50%;display:grid;place-items:center;background:var(--grad);font-size:32px}
+    h1{font-size:clamp(28px,6vw,38px);margin:0 0 14px;letter-spacing:-.03em}
+    p{color:var(--muted);line-height:1.65;margin:0 auto 18px}
+    .status{font-size:13px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);margin:22px 0}
+    a{display:inline-block;margin-top:10px;padding:14px 24px;border-radius:999px;background:var(--grad);color:white;text-decoration:none;font-weight:800}
+    small{display:block;margin-top:24px;color:#77809d;line-height:1.5}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mark" aria-hidden="true">✓</div>
+    <h1>Thank you!</h1>
+    <p>Your payment process has returned to our store. We are checking the payment status before confirming your order.</p>
+    <div class="status" id="payment-status" role="status" aria-live="polite">Payment confirmation is not available on this page yet.</div>
+    <p>Please check your Stripe receipt or contact our support team if you completed a payment and need help with your order.</p>
+    <a href="index.html">Return to the store</a>
+    <small>This page alone does not confirm that a payment was successful. Your order is confirmed only when Stripe has verified the payment.</small>
+  </main>
+  <script>
+    // A Stripe Payment Link can redirect here, but this static page cannot
+    // independently verify payment status. Do not fire PURCHASE here.
+    // Add a verified server-side confirmation/webhook before enabling PURCHASE.
+    const params = new URLSearchParams(window.location.search);
+    const status = document.getElementById('payment-status');
+    if (params.has('session_id')) {
+      status.textContent = 'Stripe returned a checkout session reference. Payment verification is still required.';
+    }
+  </script>
+</body>
+</html>
