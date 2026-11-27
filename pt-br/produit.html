@@ -336,15 +336,8 @@ snaptr('track','PAGE_VIEW');
   <div class="gc-inner">
     <div class="gc-icon">
       <img src="../game-logo.png" alt="" onload="this.classList.add('on')" onerror="this.remove()">
-      <span class="gc-ph"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="9" rx="4.5"/><line x1="7" y1="11" x2="7" y2="14"/><line x1="5.5" y1="12.5" x2="8.5" y2="12.5"/><circle cx="16" cy="11.5" r=".6"/><circle cx="18" cy="13.5" r=".6"/></svg></span>
     </div>
-    <div class="gc-text">Contagem regressiva para o lançamento</div>
-    <div class="gc-timer">
-      <span class="gc-u"><b id="cdD">00</b>d</span>
-      <span class="gc-u"><b id="cdH">00</b>h</span>
-      <span class="gc-u"><b id="cdM">00</b>m</span>
-      <span class="gc-u"><b id="cdS">00</b>s</span>
-    </div>
+    <div class="gc-text">PRODUTO DISPONÍVEL AGORA — GARANTA JÁ O SEU!</div>
   </div>
 </div>
 
@@ -384,8 +377,8 @@ snaptr('track','PAGE_VIEW');
     <div class="rating"><span class="stars">★★★★★</span> 4,9 · 2.148 avaliações</div>
 
     <div class="price-line">
-      <span class="old">$600</span>
-      <span class="new">$299</span>
+      <span class="old">R$ 4.398,00</span>
+      <span class="new">R$ 2.199,00</span>
       <span class="save">−50%</span>
     </div>
     <div class="tax">Impostos incluídos · Frete grátis</div>
@@ -419,7 +412,7 @@ snaptr('track','PAGE_VIEW');
     </div>
 
     <div class="buy-row">
-<button class="btn btn-red" onclick="if(typeof snaptr==='function'){snaptr('track','ADD_CART');} openCart();">Adicionar ao carrinho — $299</button>      <button class="btn btn-outline" onclick="openCart()">Comprar agora</button>
+<button class="btn btn-red" onclick="if(typeof snaptr==='function'){snaptr('track','ADD_CART');} openCart();">Adicionar ao carrinho — R$ 2.199,00</button>      <button class="btn btn-outline" onclick="openCart()">Comprar agora</button>
     </div>
 
     <div class="reassure">
@@ -532,7 +525,7 @@ snaptr('track','PAGE_VIEW');
     <div class="section-head"><h2>Perguntas frequentes</h2></div>
     <div class="faq-item"><button class="faq-q">O PS5 roda jogos da geração anterior?<span class="plus">+</span></button><div class="faq-a"><div>Sim. Ele é compatível com quase todo o catálogo da geração anterior.</div></div></div>
     <div class="faq-item"><button class="faq-q">Posso comprar mais de uma unidade?<span class="plus">+</span></button><div class="faq-a"><div>Não — a oferta de Black Friday é limitada a uma compra por pessoa.</div></div></div>
-    <div class="faq-item"><button class="faq-q">Até quando vale o preço de Black Friday?<span class="plus">+</span></button><div class="faq-a"><div>O preço de US$ 299 é uma oferta limitada de Black Friday, válida enquanto durarem os estoques. (Condições fictícias.)</div></div></div>
+    <div class="faq-item"><button class="faq-q">Até quando vale o preço de Black Friday?<span class="plus">+</span></button><div class="faq-a"><div>O preço de R$ 2.199,00 é uma oferta limitada, válida conforme as condições reais de disponibilidade.</div></div></div>
     <div class="faq-item"><button class="faq-q">O controle está incluso?<span class="plus">+</span></button><div class="faq-a"><div>Sim, o console acompanha um controle com resposta tátil.</div></div></div>
   </div>
 </section>
@@ -583,12 +576,12 @@ snaptr('track','PAGE_VIEW');
     <div class="cart-item">
       <div class="ci-img"><img src="../edition-digital.png" alt="" onerror="this.remove()"></div>
       <div class="ci-info"><b>PS5 — Digital 1 TB</b><span>Oferta de Black Friday</span></div>
-      <div class="ci-price">$299</div>
+      <div class="ci-price">R$ 2.199,00</div>
     </div>
     <div class="limit-note">⚠ Limite de uma compra por pessoa</div>
   </div>
   <div class="cart-foot">
-    <div class="cart-total"><span>Total</span><b>$299</b></div>
+    <div class="cart-total"><span>Total</span><b>R$ 2.199,00</b></div>
     <!-- Remplace href="#" par ton lien de paiement Stripe -->
     <a class="btn btn-red" id="checkoutBtn" href="#" onclick="return goCheckout()">Finalizar compra</a>
   </div>
@@ -658,22 +651,7 @@ snaptr('track','PAGE_VIEW');
   document.querySelectorAll('.facc-h:not(.static)').forEach(h=>h.addEventListener('click',()=>{
     h.classList.toggle('open');const b=h.nextElementSibling;if(b)b.classList.toggle('open');
   }));
-  // compte à rebours — change la date ci-dessous (AAAA-MM-JJTHH:MM:SS)
-  var LAUNCH_DATE = "2026-11-19T00:00:00";
-  (function(){
-    const D=document.getElementById('cdD'),H=document.getElementById('cdH'),M=document.getElementById('cdM'),S=document.getElementById('cdS');
-    if(!D)return;
-    const target=new Date(LAUNCH_DATE).getTime();
-    function p(n){return String(n).padStart(2,'0');}
-    function tick(){
-      let diff=target-Date.now(); if(diff<0)diff=0;
-      D.textContent=p(Math.floor(diff/864e5));
-      H.textContent=p(Math.floor(diff%864e5/36e5));
-      M.textContent=p(Math.floor(diff%36e5/6e4));
-      S.textContent=p(Math.floor(diff%6e4/1e3));
-    }
-    tick(); setInterval(tick,1000);
-  })();
+
 </script>
 </body>
 </html>
